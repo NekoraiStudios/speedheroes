@@ -21,7 +21,7 @@ export class SpeedHeroesActorSheet extends foundry.applications.sheets.ActorShee
 
 	/** @override */
 	get template() {
-		loadTemplates([
+		foundry.applications.handlebars.loadTemplates([
 			"systems/speedheroes/templates/actor/parts/actor-equipment.hbs",
 			"systems/speedheroes/templates/actor/parts/actor-pilot.hbs",
 			"systems/speedheroes/templates/actor/parts/active-effects.hbs"
