@@ -1,0 +1,35 @@
+{
+	"id": "speedheroes",
+	"version": "0.0.1",
+	"title": "SpeedHeroes",
+	"url": "https://github.com/NekoraiStudios/speedheroes",
+	"description": "Aventures sur roues Dans ce jeu de rôle sur table à prise en main rapide, vous incarnez des SpeedHeroes, des pilotes qui accomplissent des missions périlleuses à bord de véhicules modifiés avec des technologies surnaturelles.",
+	"license": "LICENSE",
+	"authors": [
+		{
+			"name": "Nekorai",
+			"url": "https://nekoraistudios.com"
+		}
+	],
+	"esmodules": ["./module/base.js"],
+	"styles": ["./styles/base.css"],
+	"packs": [],
+	"languages": [
+		{
+			"lang": "fr",
+			"name": "Français",
+			"path": "lang/fr.json"
+		},
+		{
+			"lang": "en",
+			"name": "English",
+			"path": "lang/en.json"
+		}
+	],
+	"compatibility": {
+		"minimum": "12",
+		"verified": "13"
+	},
+	"manifest": "https://raw.githubusercontent.com/NekoraiStudios/speedheroes/refs/heads/main/system.json",
+	"download": "https://github.com/NekoraiStudios/speedheroes/archive/refs/heads/main.zip"
+}
