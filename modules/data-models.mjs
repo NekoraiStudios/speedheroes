@@ -33,8 +33,8 @@ export class VehiculeDataModel extends ActorDataModel {
 				min: new NumberField({ required: true, integer: true, min: 0, initial: 0 }),
 				max: new NumberField({ required: true, integer: true, min: 0, initial: 3 })
 			}),
-			pilot: new EmbeddedDocumentField(PilotDataModel),
-			tech: new EmbeddedDocumentField(TechDataModel)
+			pilot: new EmbeddedDocumentField(foundry.documents.BaseItem),
+			tech: new EmbeddedDocumentField(foundry.documents.BaseItem)
 		}
 	}
 }
