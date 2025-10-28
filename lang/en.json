@@ -2,5 +2,8 @@
 	"SPEEDHEROES.maneuverability": "Maneuverability",
 	"SPEEDHEROES.power": "Power",
 	"SPEEDHEROES.robustness": "Robustness",
-	"SPEEDHEROES.resistance": "Resistance"
+	"SPEEDHEROES.resistance": "Resistance",
+	"TYPES.item.tech": "Techs",
+	"TYPES.actor.vehicule": "Vehicule",
+	"TYPES.actor.pilot": "Pilot"
 }
