@@ -1,5 +1,5 @@
-import { SystemActor, SystemItem } from "./module/documents.mjs";
-import { VehiculeDataModel, PilotDataModel, TechDataModel } from "./module/data-models.mjs";
+import { SystemActor, SystemItem } from "./modules/documents.mjs";
+import { VehiculeDataModel, PilotDataModel, TechDataModel } from "./modules/data-models.mjs";
 
 Hooks.once("init", () => {
 	// Configure custom Document implementations.
