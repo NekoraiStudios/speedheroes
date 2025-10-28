@@ -40,6 +40,7 @@
 		"minimum": "12",
 		"verified": "13"
 	},
+	"background": "systems/speedheroes/ui/background-system.jpg",
 	"manifest": "https://raw.githubusercontent.com/NekoraiStudios/speedheroes/refs/heads/main/system.json",
 	"download": "https://github.com/NekoraiStudios/speedheroes/archive/refs/heads/main.zip"
 }

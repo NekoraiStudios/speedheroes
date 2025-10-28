@@ -1,5 +1,6 @@
-import { SystemActor, SystemItem } from "./modules/documents.mjs";
-import { VehiculeDataModel, PilotDataModel, TechDataModel } from "./modules/data-models.mjs";
+import { SystemActor, SystemItem } from "./module/documents.mjs";
+import { VehiculeDataModel, PilotDataModel, TechDataModel } from "./module/data-models.mjs";
+import { SpeedHeroesActorSheet } from "./sheets/vehicule.mjs";
 
 Hooks.once("init", () => {
 	// Configure custom Document implementations.
@@ -14,6 +15,11 @@ Hooks.once("init", () => {
 	CONFIG.Item.dataModels = {
 		tech: TechDataModel
 	};
+	
+	Actors.registerSheet('vehicule', SpeedHeroesActorSheet, {
+	  makeDefault: true,
+	  label: 'SPEEDHEROES.SheetLabels.Actor',
+	});
 
 	// Configure trackable attributes. Exemple from web site for other setting
 	/*
