@@ -21,11 +21,6 @@ export class SpeedHeroesActorSheet extends foundry.applications.sheets.ActorShee
 
 	/** @override */
 	get template() {
-		foundry.applications.handlebars.loadTemplates([
-			"systems/speedheroes/templates/actor/parts/actor-equipment.hbs",
-			"systems/speedheroes/templates/actor/parts/actor-pilot.hbs",
-			"systems/speedheroes/templates/actor/parts/active-effects.hbs"
-		]);
 		return `systems/speedheroes/templates/actor/${this.actor.type}-sheet.hbs`;
 	}
 
@@ -212,6 +207,11 @@ export class SpeedHeroesActorSheet extends foundry.applications.sheets.ActorShee
 	/** @override */
 	async _renderHTML(options) {
 		const templatePath = this.template;
+		await foundry.applications.handlebars.loadTemplates([
+			"systems/speedheroes/templates/actor/parts/actor-equipment.hbs",
+			"systems/speedheroes/templates/actor/parts/actor-pilot.hbs",
+			"systems/speedheroes/templates/actor/parts/active-effects.hbs"
+		]);
 		const context = await this._prepareContext(options); // Get data for the template
 		const html = await foundry.applications.handlebars.renderTemplate(templatePath, context);
 		return new DOMParser().parseFromString(html, "text/html").body.firstChild;
@@ -220,6 +220,11 @@ export class SpeedHeroesActorSheet extends foundry.applications.sheets.ActorShee
 	/** @override */
 	async _replaceHTML(options) {
 		const templatePath = this.template;
+		await foundry.applications.handlebars.loadTemplates([
+			"systems/speedheroes/templates/actor/parts/actor-equipment.hbs",
+			"systems/speedheroes/templates/actor/parts/actor-pilot.hbs",
+			"systems/speedheroes/templates/actor/parts/active-effects.hbs"
+		]);
 		const context = await this._prepareContext(options); // Get data for the template
 		const html = await foundry.applications.handlebars.renderTemplate(templatePath, context);
 		return new DOMParser().parseFromString(html, "text/html").body.firstChild;
