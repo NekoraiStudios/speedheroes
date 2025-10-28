@@ -2,7 +2,7 @@
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
-export class SpeedHeroesActorSheet extends ActorSheet {
+export class SpeedHeroesActorSheet extends foundry.applications.sheets.ActorSheet {
 	/** @override */
 	static get defaultOptions() {
 		return foundry.utils.mergeObject(super.defaultOptions, {

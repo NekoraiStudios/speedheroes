@@ -16,7 +16,7 @@ Hooks.once("init", () => {
 		tech: TechDataModel
 	};
 	
-	Actors.registerSheet('vehicule', SpeedHeroesActorSheet, {
+	foundry.documents.collections.Actors.registerSheet('vehicule', SpeedHeroesActorSheet, {
 	  makeDefault: true,
 	  label: 'SPEEDHEROES.SheetLabels.Actor',
 	});
