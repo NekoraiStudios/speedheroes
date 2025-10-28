@@ -4,8 +4,8 @@ export class SystemActor extends Actor {
 		damage = Math.round(Math.max(1, damage));
 
 		// Update the health.
-		const { value } = this.system.resources.resistance;
-		await this.update({ "system.resources.resistance.value": value - damage });
+		const { value } = this.system.resistance;
+		await this.update({ "system.resistance.value": value - damage });
 
 		// Log a message.
 		await ChatMessage.implementation.create({
@@ -16,7 +16,7 @@ export class SystemActor extends Actor {
 	prepareDerivedData() {
 		super.prepareDerivedData();
 		// Clamp health within the appropriate range.
-		const { resistance } = this.system.resources.resistance;
+		const { resistance } = this.system.resistance;
 		resistance.value = Math.clamp(resistance.value, resistance.min, resistance.max);
 	}
 }
