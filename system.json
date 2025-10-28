@@ -26,6 +26,16 @@
 			"path": "lang/en.json"
 		}
 	],
+	"documentTypes": {
+		"Actor": {
+			"vehicule": {},
+			"pilot":{}
+		},
+		"Item": {
+			"tech": {}
+		}
+	}
+	,
 	"compatibility": {
 		"minimum": "12",
 		"verified": "13"
