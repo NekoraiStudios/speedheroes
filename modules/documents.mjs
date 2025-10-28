@@ -16,7 +16,7 @@ export class SystemActor extends Actor {
 	prepareDerivedData() {
 		super.prepareDerivedData();
 		// Clamp health within the appropriate range.
-		const { resistance } = this.system.resources;
+		const { resistance } = this.system.resources.resistance;
 		resistance.value = Math.clamp(resistance.value, resistance.min, resistance.max);
 	}
 }
