@@ -206,7 +206,7 @@ export class SpeedHeroesActorSheet extends foundry.applications.sheets.ActorShee
 	
 	/** @override */
 	async _renderHTML(options) {
-		const templatePath = template();
+		const templatePath = this.template();
 		const context = await this._prepareContext(options); // Get data for the template
 		const html = await renderTemplate(templatePath, context);
 		return new DOMParser().parseFromString(html, "text/html").body.firstChild;
@@ -214,7 +214,7 @@ export class SpeedHeroesActorSheet extends foundry.applications.sheets.ActorShee
 	
 	/** @override */
 	async _replaceHTML(options) {
-		const templatePath = template();
+		const templatePath = this.template();
 		const context = await this._prepareContext(options); // Get data for the template
 		const html = await renderTemplate(templatePath, context);
 		return new DOMParser().parseFromString(html, "text/html").body.firstChild;

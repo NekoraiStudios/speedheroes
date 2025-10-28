@@ -18,9 +18,6 @@ export class SystemActor extends Actor {
 		
 		if (this.type == "vehicule") {
 			console.log(this.system?.resistance);
-			// Clamp health within the appropriate range.
-			const { resistance } = this.system.resistance;
-			resistance.value = Math.clamp(resistance.value, resistance.min, resistance.max);
 		}
 		
 	}
