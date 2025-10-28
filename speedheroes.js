@@ -3,8 +3,8 @@ import { VehiculeDataModel, PilotDataModel, TechDataModel } from "./modules/data
 
 Hooks.once("init", () => {
 	// Configure custom Document implementations.
-//	CONFIG.Actor.documentClass = SystemActor;
-//	CONFIG.Item.documentClass = SystemItem;
+	CONFIG.Actor.documentClass = SystemActor;
+	CONFIG.Item.documentClass = SystemItem;
 
 	// Configure System Data Models.
 	CONFIG.Actor.dataModels = {
