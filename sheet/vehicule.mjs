@@ -96,8 +96,8 @@ export class SpeedHeroesActorSheet extends foundry.applications.sheets.ActorShee
 	/* -------------------------------------------- */
 
 	/** @override */
-	_onRender(html,options) {
-		super._onRender(html,options);
+	activateListeners(html,options) {
+		super.activateListeners(html,options);
 
 		// Render the item sheet for viewing/editing prior to the editable check.
 		html.on('click', '.item-edit', (ev) => {
@@ -106,8 +106,6 @@ export class SpeedHeroesActorSheet extends foundry.applications.sheets.ActorShee
 			item.sheet.render(true);
 		});
 
-		// Rollable abilities.
-		html.on('click', '.rollable', this._onRoll.bind(this));
 		// -------------------------------------------------------------
 		// Everything below here is only needed if the sheet is editable
 		if (!this.isEditable) return;
@@ -177,7 +175,7 @@ export class SpeedHeroesActorSheet extends foundry.applications.sheets.ActorShee
 	 * @param {Event} event	 The originating click event
 	 * @private
 	 */
-	_onRoll(event) {
+	static onRoll(event) {
 		event.preventDefault();
 		const element = event.currentTarget;
 		const dataset = element.dataset;
