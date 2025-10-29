@@ -144,6 +144,20 @@ export class SpeedHeroesActorSheet extends foundry.applications.sheets.ActorShee
 	}
 
 	/**
+	 *  Handle events
+	 * 	@param {Event} event	 The originating click event
+	  * @private
+	 */
+	_onEvent(event) {
+		console.log(event);
+		switch (event.target.dataset.action) {
+			case 'rollAbility':
+				this._onRollAbility(event.target.dataset.ability);
+				break;
+		}
+		event.preventDefault();
+	}
+	/**
 	 * Handle creating a new Owned Item for the actor using initial data defined in the HTML dataset
 	 * @param {Event} event	 The originating click event
 	 * @private
