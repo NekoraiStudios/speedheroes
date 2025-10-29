@@ -191,13 +191,12 @@ export class SpeedHeroesActorSheet extends foundry.applications.sheets.ActorShee
 					if (item) return item.roll();
 				case "main":
 					let label = 'Perform roll';
-					let roll = new Roll(dataset.roll, this.actor.getRollData());
-					roll.toMessage({
+					let roll = new Roll("3d12", this.actor.getRollData());
+					let message = roll.toMessage({
 						speaker: ChatMessage.getSpeaker({ actor: this.actor }),
 						flavor: label,
-						rollMode: game.settings.get('core', 'rollMode'),
-					});
-					return roll;
+					},{create:false,rollMode: game.settings.get('core', 'rollMode')});
+					return message;
 			}
 		}
 

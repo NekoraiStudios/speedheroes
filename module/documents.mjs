@@ -12,6 +12,10 @@ export class SystemActor extends Actor {
 				content: `${this.name} took ${damage} damage!`
 			});
 		}
+		
+	getRollData() {
+		return {}
+	}
 
 	prepareDerivedData() {
 		super.prepareDerivedData();
