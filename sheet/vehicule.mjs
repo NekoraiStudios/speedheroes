@@ -184,10 +184,20 @@ export class SpeedHeroesActorSheet extends foundry.applications.sheets.ActorShee
 
 		// Handle item rolls.
 		if (dataset.rollType) {
-			if (dataset.rollType == 'item') {
-				const itemId = element.closest('.item').dataset.itemId;
-				const item = this.actor.items.get(itemId);
-				if (item) return item.roll();
+			switch (dataset.rollType) {
+				case "item":
+					const itemId = element.closest('.item').dataset.itemId;
+					const item = this.actor.items.get(itemId);
+					if (item) return item.roll();
+				case "main":
+					let label = 'Perform roll';
+					let roll = new Roll(dataset.roll, this.actor.getRollData());
+					roll.toMessage({
+						speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+						flavor: label,
+						rollMode: game.settings.get('core', 'rollMode'),
+					});
+					return roll;
 			}
 		}
 

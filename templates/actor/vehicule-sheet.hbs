@@ -1,90 +1,93 @@
 <form class="{{cssClass}} {{type}} flexcol" autocomplete="off">
 
-  {{!-- Sheet Header --}}
-  <header class="sheet-header">
-    <img class="profile-img" src="{{img}}" data-edit="img" title="{{name}}" height="100" width="100"/>
-    <div class="header-fields">
-      <h1 class="charname"><input name="name" type="text" value="{{name}}" placeholder="Name"/></h1>
+	{{!-- Sheet Header --}}
+	<header class="sheet-header">
+		<img class="profile-img" src="{{img}}" data-edit="img" title="{{name}}" height="100" width="100"/>
+		<div class="header-fields">
+			<h1 class="charname"><input name="name" type="text" value="{{name}}" placeholder="Name"/></h1>
 
-      <div class="resources grid grid-3col">
+			<div class="resources grid grid-3col">
 
-        <div class="resource flex-group-center">
-          <label for="system.maneuverability.value" class="resource-label">Maneuverability</label>
-          <div class="resource-content flexrow flex-center flex-between">
-          <input type="text" name="system.maneuverability.value" value="{{system.maneuverability.value}}" data-dtype="Number"/>
-          <span> / </span>
-          <input type="text" name="system.maneuverability.max" value="{{system.maneuverability.max}}" data-dtype="Number"/>
-          </div>
-        </div>
+				<div class="resource flex-group-center">
+					<label for="system.maneuverability.value" class="resource-label">Maneuverability</label>
+					<div class="resource-content flexrow flex-center flex-between">
+					<input type="text" name="system.maneuverability.value" value="{{system.maneuverability.value}}" data-dtype="Number"/>
+					<span> / </span>
+					<input type="text" name="system.maneuverability.max" value="{{system.maneuverability.max}}" data-dtype="Number"/>
+					</div>
+				</div>
 
-        <div class="resource flex-group-center">
-          <label for="system.power.value" class="resource-label">Power</label>
-          <div class="resource-content flexrow flex-center flex-between">
-          <input type="text" name="system.power.value" value="{{system.power.value}}" data-dtype="Number"/>
-          <span> / </span>
-          <input type="text" name="system.power.max" value="{{system.power.max}}" data-dtype="Number"/>
-          </div>
-        </div>
-        
-         <div class="resource flex-group-center">
-          <label for="system.robustness.value" class="resource-label">Robustness</label>
-          <div class="resource-content flexrow flex-center flex-between">
-          <input type="text" name="system.robustness.value" value="{{system.robustness.value}}" data-dtype="Number"/>
-          <span> / </span>
-          <input type="text" name="system.robustness.max" value="{{system.robustness.max}}" data-dtype="Number"/>
-          </div>
-        </div>
+				<div class="resource flex-group-center">
+					<label for="system.power.value" class="resource-label">Power</label>
+					<div class="resource-content flexrow flex-center flex-between">
+					<input type="text" name="system.power.value" value="{{system.power.value}}" data-dtype="Number"/>
+					<span> / </span>
+					<input type="text" name="system.power.max" value="{{system.power.max}}" data-dtype="Number"/>
+					</div>
+				</div>
+				
+				 <div class="resource flex-group-center">
+					<label for="system.robustness.value" class="resource-label">Robustness</label>
+					<div class="resource-content flexrow flex-center flex-between">
+					<input type="text" name="system.robustness.value" value="{{system.robustness.value}}" data-dtype="Number"/>
+					<span> / </span>
+					<input type="text" name="system.robustness.max" value="{{system.robustness.max}}" data-dtype="Number"/>
+					</div>
+				</div>
 
-      </div>
-    </div>
-  </header>
+			</div>
+		</div>
+		<div>
+			<button class="rollable" data-rollType="main">LET'S ROLLOUT!!!</button>
+		</div>
+	</header>
 
-  {{!-- Sheet Tab Navigation --}}
-  <nav class="sheet-tabs tabs" data-group="primary">
-    {{!-- Default tab is specified in actor-sheet.mjs --}}
-    <a class="item" data-tab="techs">Techs</a>
-    <a class="item" data-tab="equipment">Equipment</a>
-    <a class="item" data-tab="pilot">Pilot</a>
-    <a class="item" data-tab="effects">Effects</a>
-  </nav>
+	{{!-- Sheet Tab Navigation --}}
+	<nav class="sheet-tabs tabs" data-group="primary">
+		{{!-- Default tab is specified in actor-sheet.mjs --}}
+		<a class="item" data-tab="techs">Techs</a>
+		<a class="item" data-tab="equipment">Equipment</a>
+		<a class="item" data-tab="pilot">Pilot</a>
+		<a class="item" data-tab="effects">Effects</a>
+	</nav>
 
-  {{!-- Sheet Body --}}
-  <section class="sheet-body">
+	{{!-- Sheet Body --}}
+	<section class="sheet-body">
 
-    {{!-- Owned Features Tab --}}
-    <div class="tab techs" data-group="primary" data-tab="techs">
-      <section class="grid grid-3col">
+		{{!-- Owned Features Tab --}}
+		<div class="tab techs" data-group="primary" data-tab="techs">
+			<section class="grid grid-3col">
 
-          {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
-          use both the "grid" and "grid-Ncol" class where "N" can be any number
-          from 1 to 12 and will create that number of columns.  --}}
-          <div class="abilities flexcol">
-            {{#each system.tech as |tech key|}}
-            <div class="ability flexrow flex-group-center">
-              <label for="system.tech.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="d20+@abilities.{{key}}.mod" data-label="{{localize (lookup @root.config.abilities key)}}">{{localize (lookup @root.config.abilities key)}}</label>
-              <input type="text" name="system.abilities.{{key}}.value" value="{{tech.value}}" data-dtype="Number"/>
-              <span class="tech-mod rollable" data-roll="d20+@abilities.{{key}}.mod" data-label="{{localize (lookup @root.config.abilities key)}}">{{numberFormat tech.mod decimals=0 sign=true}}</span>
-            </div>
-            {{/each}}
-          </div>
-      </section>
-    </div>
+					{{!-- The grid classes are defined in scss/global/_grid.scss. To use,
+					use both the "grid" and "grid-Ncol" class where "N" can be any number
+					from 1 to 12 and will create that number of columns.	--}}
+					<div class="abilities flexcol">
+						{{#each system.tech as |tech key|}}
+						<div class="ability flexrow flex-group-center">
+							<label for="system.tech.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="d20+@abilities.{{key}}.mod" data-label="{{localize (lookup @root.config.abilities key)}}">{{localize (lookup @root.config.abilities key)}}</label>
+							<input type="text" name="system.abilities.{{key}}.value" value="{{tech.value}}" data-dtype="Number"/>
+							<span class="tech-mod rollable" data-roll="d20+@abilities.{{key}}.mod" data-label="{{localize (lookup @root.config.abilities key)}}">{{numberFormat tech.mod decimals=0 sign=true}}</span>
+						</div>
+						{{/each}}
+					</div>
+			</section>
+		</div>
 
 
-    {{!-- Owned Items Tab --}}
-    <div class="tab equipment" data-group="primary" data-tab="equipment">
-       {{> "systems/speedheroes/templates/actor/parts/actor-equipment.hbs"}}
-    </div>
+		{{!-- Owned Items Tab --}}
+		<div class="tab equipment" data-group="primary" data-tab="equipment">
+			 {{> "systems/speedheroes/templates/actor/parts/actor-equipment.hbs"}}
+		</div>
 
-    {{!-- Owned Spells Tab --}}
-    <div class="tab pilot" data-group="primary" data-tab="pilot">
-      {{> "systems/speedheroes/templates/actor/parts/actor-pilot.hbs"}}
-    </div>
+		{{!-- Owned Spells Tab --}}
+		<div class="tab pilot" data-group="primary" data-tab="pilot">
+			{{> "systems/speedheroes/templates/actor/parts/actor-pilot.hbs"}}
+		</div>
 
-    {{!-- Active Effects Tab --}}
-    <div class="tab effects flexcol" data-group="primary" data-tab="effects">
-      {{> "systems/speedheroes/templates/actor/parts/active-effects.hbs"}}
-    </div>
+		{{!-- Active Effects Tab --}}
+		<div class="tab effects flexcol" data-group="primary" data-tab="effects">
+			{{> "systems/speedheroes/templates/actor/parts/active-effects.hbs"}}
+		</div>
 
-  </section>
+	</section>
 </form>
