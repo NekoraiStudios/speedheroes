@@ -12,7 +12,7 @@ export class PilotActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
 	
 	static get DEFAULT_OPTIONS() {
 		return foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
-			//classes: ['speedheroes', 'sheet', 'actor'],
+			classes: ['speedheroes', 'sheet', 'actor'],
 			tag: "form",
 			form: {
 				handler: this.#onSubmitForm,
