@@ -7,11 +7,9 @@ const { ActorSheetV2 } = foundry.applications.sheets; // Access the base class h
 
 export class SpeedHeroesActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
 	static get DEFAULT_OPTIONS() {
-		console.log(super.DEFAULT_OPTIONS)
 		return foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
 			classes: ['speedheroes', 'sheet', 'actor'],
-			tag: "form", 
-			template: "systems/speedheroes/templates/actor/vehicule-sheet.hbs",
+			tag: "form",
 			form: {
 				handler: this._onSubmitForm,
 				submitOnChange: true,
@@ -54,8 +52,9 @@ export class SpeedHeroesActorSheet extends HandlebarsApplicationMixin(ActorSheet
 
 	/** @override */
 	get template() {
-		console.log(this.actor.type);
-		return `systems/speedheroes/templates/actor/${this.actor.type}-sheet.hbs`;
+		const type = this.document?.type || 'vehicule'; // Fallback type
+		console.log(type)
+		return `systems/speedheroes/templates/actor/${type}-sheet.hbs`;
 	}
 
 	/** @override */
