@@ -6,6 +6,10 @@ const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets; // Access the base class here
 
 export class SpeedHeroesActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
+	constructor(object, options) {
+		super(object, options)
+	}
+	
 	static get DEFAULT_OPTIONS() {
 		return foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
 			classes: ['speedheroes', 'sheet', 'actor'],
@@ -13,6 +17,7 @@ export class SpeedHeroesActorSheet extends HandlebarsApplicationMixin(ActorSheet
 			form: {
 				handler: this._onSubmitForm,
 				submitOnChange: true,
+				closeOnSubmit: false
 			},
 			width: 600,
 			height: 600,
@@ -54,9 +59,16 @@ export class SpeedHeroesActorSheet extends HandlebarsApplicationMixin(ActorSheet
 	get template() {
 		const type = this.document?.type || 'vehicule'; // Fallback type
 		console.log(type)
-		return `systems/speedheroes/templates/actor/test-sheet.hbs`;
+		return `systems/speedheroes/templates/actor/${type}-sheet.hbs`;
 	}
 
+	/**
+	 * handling data
+	 */
+	static async _onSubmitForm(event, form, formData) {
+		console.log(formData)
+	}
+	
 	/** @override */
 	activateListeners(html) { 
 		super.activateListeners(html);
