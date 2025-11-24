@@ -12,10 +12,10 @@ export class SpeedHeroesActorSheet extends HandlebarsApplicationMixin(ActorSheet
 	
 	static get DEFAULT_OPTIONS() {
 		return foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
-			classes: ['speedheroes', 'sheet', 'actor'],
+			//classes: ['speedheroes', 'sheet', 'actor'],
 			tag: "form",
 			form: {
-				handler: this._onSubmitForm,
+				handler: this.#onSubmitForm,
 				submitOnChange: true,
 				closeOnSubmit: false
 			},
@@ -30,6 +30,21 @@ export class SpeedHeroesActorSheet extends HandlebarsApplicationMixin(ActorSheet
 			],
 		});
 	}
+	/** @inheritDoc */
+	static PARTS = {
+		form: {
+			template: `systems/speedheroes/templates/actor/test-sheet.hbs`
+		}
+	}
+	
+	get document() {
+		return this.options.document
+	}
+
+	get title() {
+		return `${this.document.name}: ${game.i18n.localize('DCC.SheetConfig')}`
+	}
+	
 	/**
 	 * Prepare the context for the sheet.
 	 * @override
@@ -65,13 +80,10 @@ export class SpeedHeroesActorSheet extends HandlebarsApplicationMixin(ActorSheet
 	/**
 	 * handling data
 	 */
-	static async _onSubmitForm(event, form, formData) {
+	static async #onSubmitForm(event, form, formData) {
 		console.log(formData)
-	}
-	
-	/** @override */
-	activateListeners(html) { 
-		super.activateListeners(html);
+		event.preventDefault()
+		await this.document.update(formData.object)
 	}
 
 	/**
