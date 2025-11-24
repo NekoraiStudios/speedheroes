@@ -36,9 +36,9 @@ export class SpeedHeroesActorSheet extends HandlebarsApplicationMixin(ActorSheet
 		
 		context.tech = context.document.items.filter(item => item.type === "tech");
 		
-		if (context.system.description) {
+		if (context.document.system.description) {
 			context.enrichedDescription = await foundry.applications.ux.TextEditor.enrichHTML(
-				context.system.description,
+				context.document.system.description,
 				{
 					async: true, // Required in v13 for asynchronous enrichment
 					rollData: context.document.getRollData(),
@@ -51,7 +51,8 @@ export class SpeedHeroesActorSheet extends HandlebarsApplicationMixin(ActorSheet
 	}
 
 	/** @override */
-	async getTemplate() {
+	get template() {
+		console.log(this.actor.type);
 		return `systems/speedheroes/templates/actor/${this.actor.type}-sheet.hbs`;
 	}
 
