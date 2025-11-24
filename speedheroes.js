@@ -34,8 +34,14 @@ Hooks.once("init", () => {
 	// Configure trackable attributes. Exemple from web site for other setting
 	
 	CONFIG.Actor.trackableAttributes = {
-		vehicule: {
-			bar: ["resistance"]
+		vehicle: {
+			bar: [
+				"system.maneuverability",
+				"system.power",
+				"system.robustness",
+				"system.resistance"
+			],
+			value: []
 		}
 	};
 

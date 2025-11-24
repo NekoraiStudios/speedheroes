@@ -31,6 +31,7 @@ export class SpeedHeroesActorSheet extends HandlebarsApplicationMixin(ActorSheet
 	 * @override
 	 */
 	async _prepareContext(options) {
+		console.log(options);
 		// Call your existing getData method logic to populate the context
 		const context = await super._prepareContext(options);
 		
