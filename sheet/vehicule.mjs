@@ -7,6 +7,7 @@ const { ActorSheetV2 } = foundry.applications.sheets; // Access the base class h
 
 export class SpeedHeroesActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
 	static get DEFAULT_OPTIONS() {
+		console.log(super.DEFAULT_OPTIONS)
 		return foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
 			classes: ['speedheroes', 'sheet', 'actor'],
 			tag: "form", 
