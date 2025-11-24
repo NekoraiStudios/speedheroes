@@ -25,6 +25,24 @@ export class SpeedHeroesActorSheet extends HandlebarsApplicationMixin(ActorSheet
 			],
 		});
 	}
+	/**
+	 * Prepare the context for the sheet.
+	 * @override
+	 */
+	async _prepareContext(options) {
+		// Call your existing getData method logic to populate the context
+		const context = await this.getData(options); 
+		
+		// You might need to adjust getData to return a slightly different shape
+		// if the V2 framework expects specific properties like 'document'
+		
+		// Ensure the document instance is always available in the context
+		context.document = this.document; 
+		context.actor = this.document; // Common alias
+		context.data = context.system; // Common alias for system data
+
+		return context;
+	}
 
 	/** @override */
 	get template() {
@@ -48,24 +66,24 @@ export class SpeedHeroesActorSheet extends HandlebarsApplicationMixin(ActorSheet
 		// Everything below here is only needed if the sheet is editable
 		if (!this.isEditable) return;
 
-        // Corrected jQuery use to native event listeners or using the original jQuery object if preferred
-        // Option 1 (Preferred V2 Native DOM API):
+		// Corrected jQuery use to native event listeners or using the original jQuery object if preferred
+		// Option 1 (Preferred V2 Native DOM API):
 		html.querySelector('.item-create')?.addEventListener('click', this._onItemCreate.bind(this));
 
 		// Delete Inventory Item
-        html.addEventListener('click', (ev) => {
-            if (!ev.target.closest('.item-delete')) return;
+		html.addEventListener('click', (ev) => {
+			if (!ev.target.closest('.item-delete')) return;
 
 			const li = ev.target.closest('.item');
 			const item = this.actor.items.get(li.dataset.itemId);
 			item.delete();
-            // Note: Native slideUp is more complex, you can keep jQuery for effects if necessary for now
+			// Note: Native slideUp is more complex, you can keep jQuery for effects if necessary for now
 			$(li).slideUp(200, () => this.render(false)); 
 		});
 
 		// Active Effect management
-        html.addEventListener('click', (ev) => {
-            if (!ev.target.closest('.effect-control')) return;
+		html.addEventListener('click', (ev) => {
+			if (!ev.target.closest('.effect-control')) return;
 
 			const row = ev.target.closest('li');
 			const document =
@@ -79,7 +97,7 @@ export class SpeedHeroesActorSheet extends HandlebarsApplicationMixin(ActorSheet
 		// Drag events for macros.
 		if (this.actor.isOwner) {
 			let handler = (ev) => this._onDragStart(ev);
-            // Option 2: If you must use jQuery for selection/iteration
+			// Option 2: If you must use jQuery for selection/iteration
 			$(html).find('li.item').each((i, li) => {
 				if (li.classList.contains('inventory-header')) return;
 				li.setAttribute('draggable', true);
