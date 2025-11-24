@@ -35,7 +35,7 @@ export class SpeedHeroesActorSheet extends HandlebarsApplicationMixin(ActorSheet
 		const context = await super._prepareContext(options);
 		
 		context.tech = context.document.items.filter(item => item.type === "tech");
-		
+		/*
 		if (context.document.system.description) {
 			context.enrichedDescription = await foundry.applications.ux.TextEditor.enrichHTML(
 				context.document.system.description,
@@ -45,7 +45,7 @@ export class SpeedHeroesActorSheet extends HandlebarsApplicationMixin(ActorSheet
 					relativeTo: context.document,
 				}
 			);
-		}
+		}*/
 
 		return context;
 	}
