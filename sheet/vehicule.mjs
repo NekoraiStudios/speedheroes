@@ -7,6 +7,12 @@ export class SpeedHeroesActorSheet extends foundry.applications.api.HandlebarsAp
 	static get defaultOptions() {
 		return foundry.utils.mergeObject(super.defaultOptions, {
 			classes: ['speedheroes', 'sheet', 'actor'],
+			template: "systems/speedheroes/templates/actor/vehicule-sheet.hbs",
+			tag: "form", // Still need this for automatic form handling
+			form: {
+				handler: this._onSubmitForm,
+				submitOnChange: true,
+			},
 			width: 600,
 			height: 600,
 			tabs: [
@@ -19,7 +25,7 @@ export class SpeedHeroesActorSheet extends foundry.applications.api.HandlebarsAp
 		});
 	}
 
-	/** @override */
+	/** @override 
 	get template() {
 		return `systems/speedheroes/templates/actor/${this.actor.type}-sheet.hbs`;
 	}
@@ -244,18 +250,6 @@ export class SpeedHeroesActorSheet extends foundry.applications.api.HandlebarsAp
 	
 	
 	
-	static get DEFAULT_OPTIONS() {
-		return foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
-			// ... (your existing options)
-			template: "systems/speedheroes/templates/actor/vehicule-sheet.hbs",
-			tag: "form", // Still need this for automatic form handling
-			form: {
-				handler: this._onSubmitForm,
-				submitOnChange: true,
-			}
-		});
-	}
-
 	// You can now remove your custom _renderHTML and _replaceHTML overrides.
 	// The mixin provides the concrete implementations of these methods.
 
