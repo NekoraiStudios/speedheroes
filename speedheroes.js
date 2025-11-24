@@ -23,8 +23,6 @@ Hooks.once("init", () => {
 	});
 	
 	foundry.applications.handlebars.loadTemplates([
-		"systems/speedheroes/templates/actor/pilot-sheet.hbs",
-		"systems/speedheroes/templates/actor/vehicule-sheet.hbs",
 		"systems/speedheroes/templates/actor/parts/actor-equipment.hbs",
 		"systems/speedheroes/templates/actor/parts/actor-pilot.hbs",
 		"systems/speedheroes/templates/actor/parts/active-effects.hbs"

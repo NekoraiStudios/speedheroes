@@ -33,7 +33,7 @@ export class SpeedHeroesActorSheet extends HandlebarsApplicationMixin(ActorSheet
 	/** @inheritDoc */
 	static PARTS = {
 		form: {
-			template: `systems/speedheroes/templates/actor/test-sheet.hbs`
+			template: `systems/speedheroes/templates/actor/vehicule-sheet.hbs`
 		}
 	}
 	
