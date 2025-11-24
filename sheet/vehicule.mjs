@@ -2,7 +2,7 @@
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
-export class SpeedHeroesActorSheet extends foundry.applications.sheets.ActorSheetV2 {
+export class SpeedHeroesActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
 	/** @override */
 	static get defaultOptions() {
 		return foundry.utils.mergeObject(super.defaultOptions, {
@@ -242,24 +242,31 @@ export class SpeedHeroesActorSheet extends foundry.applications.sheets.ActorShee
 		}
 	}
 	
-	/** @override */
-	/*
-	async _renderHTML(_context,options) {
-		const templatePath = this.template;
-		await foundry.applications.handlebars.loadTemplates([
-			"systems/speedheroes/templates/actor/parts/actor-equipment.hbs",
-			"systems/speedheroes/templates/actor/parts/actor-pilot.hbs",
-			"systems/speedheroes/templates/actor/parts/active-effects.hbs"
-		]);
-		const context = await this._prepareContext(options); // Get data for the template
-		const html = await foundry.applications.handlebars.renderTemplate(templatePath, context.document);
-		return new DOMParser().parseFromString(html, "text/html").body.firstChild;
-	}
 	
+	
+	static get DEFAULT_OPTIONS() {
+		return foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
+			// ... (your existing options)
+			template: template(),
+			tag: "form", // Still need this for automatic form handling
+			form: {
+				handler: this._onSubmitForm,
+				submitOnChange: true,
+			}
+		});
+	}
+
+	// You can now remove your custom _renderHTML and _replaceHTML overrides.
+	// The mixin provides the concrete implementations of these methods.
+
 	/** @override */
-	/*
-	async _replaceHTML(result,context,options) {
-		context.innerHTML = "";
-		context.append(result);
-	}*/
+	activateListeners(html) {
+		super.activateListeners(html);
+		// ... your custom button listeners ...
+	}
+
+	/** @override */
+	async _updateObject(event, formData) {
+		return this.document.update(formData);
+	}
 }
