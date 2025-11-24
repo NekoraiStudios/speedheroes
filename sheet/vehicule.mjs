@@ -6,10 +6,10 @@ const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets; // Access the base class here
 
 export class SpeedHeroesActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
-	static get defaultOptions() {
-		return foundry.utils.mergeObject(super.defaultOptions, {
+	static get DEFAULT_OPTIONS() {
+		return foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
 			classes: ['speedheroes', 'sheet', 'actor'],
-			tag: "form", // Still need this for automatic form handling
+			tag: "form", 
 			form: {
 				handler: this._onSubmitForm,
 				submitOnChange: true,
@@ -32,16 +32,14 @@ export class SpeedHeroesActorSheet extends HandlebarsApplicationMixin(ActorSheet
 	}
 
 	/** @override */
-	activateListeners(html,options) {
-		super.activateListeners(html,options);
+	activateListeners(html) { 
+		super.activateListeners(html);
 
-		// Render the item sheet for viewing/editing prior to the editable check.
-		
 		const editButtons = html.querySelector('.item-edit');
 		if (editButtons) {
 			editButtons.addEventListener('click', (ev) => {
-				const li = $(ev.currentTarget).parents('.item');
-				const item = this.actor.items.get(li.data('itemId'));
+				const li = ev.currentTarget.closest('.item'); 
+				const item = this.actor.items.get(li.dataset.itemId);
 				item.sheet.render(true);
 			});
 		}
@@ -50,20 +48,26 @@ export class SpeedHeroesActorSheet extends HandlebarsApplicationMixin(ActorSheet
 		// Everything below here is only needed if the sheet is editable
 		if (!this.isEditable) return;
 
-		// Add Inventory Item
-		html.on('click', '.item-create', this._onItemCreate.bind(this));
+        // Corrected jQuery use to native event listeners or using the original jQuery object if preferred
+        // Option 1 (Preferred V2 Native DOM API):
+		html.querySelector('.item-create')?.addEventListener('click', this._onItemCreate.bind(this));
 
 		// Delete Inventory Item
-		html.on('click', '.item-delete', (ev) => {
-			const li = $(ev.currentTarget).parents('.item');
-			const item = this.actor.items.get(li.data('itemId'));
+        html.addEventListener('click', (ev) => {
+            if (!ev.target.closest('.item-delete')) return;
+
+			const li = ev.target.closest('.item');
+			const item = this.actor.items.get(li.dataset.itemId);
 			item.delete();
-			li.slideUp(200, () => this.render(false));
+            // Note: Native slideUp is more complex, you can keep jQuery for effects if necessary for now
+			$(li).slideUp(200, () => this.render(false)); 
 		});
 
 		// Active Effect management
-		html.on('click', '.effect-control', (ev) => {
-			const row = ev.currentTarget.closest('li');
+        html.addEventListener('click', (ev) => {
+            if (!ev.target.closest('.effect-control')) return;
+
+			const row = ev.target.closest('li');
 			const document =
 				row.dataset.parentId === this.actor.id
 					? this.actor
@@ -75,7 +79,8 @@ export class SpeedHeroesActorSheet extends HandlebarsApplicationMixin(ActorSheet
 		// Drag events for macros.
 		if (this.actor.isOwner) {
 			let handler = (ev) => this._onDragStart(ev);
-			html.find('li.item').each((i, li) => {
+            // Option 2: If you must use jQuery for selection/iteration
+			$(html).find('li.item').each((i, li) => {
 				if (li.classList.contains('inventory-header')) return;
 				li.setAttribute('draggable', true);
 				li.addEventListener('dragstart', handler, false);
@@ -83,7 +88,6 @@ export class SpeedHeroesActorSheet extends HandlebarsApplicationMixin(ActorSheet
 		}
 	}
 
-	
 	/**
 	 * This method is called upon form submission after form data is validated.
 	 * @param {Event} event The initial triggering submission event.
