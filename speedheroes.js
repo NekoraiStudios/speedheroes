@@ -16,12 +16,14 @@ Hooks.once("init", () => {
 		tech: TechDataModel
 	};
 	
-	foundry.documents.collections.Actors.registerSheet('vehicule', SpeedHeroesActorSheet, {
+	foundry.documents.collections.Actors.registerSheet('speedheroes', SpeedHeroesActorSheet, {
+		type: ['vehicule','pilot'],
 		makeDefault: true,
 		label: 'SPEEDHEROES.SheetLabels.Actor',
 	});
 	
 	foundry.applications.handlebars.loadTemplates([
+		"systems/speedheroes/templates/actor/pilot-sheet.hbs",
 		"systems/speedheroes/templates/actor/vehicule-sheet.hbs",
 		"systems/speedheroes/templates/actor/parts/actor-equipment.hbs",
 		"systems/speedheroes/templates/actor/parts/actor-pilot.hbs",
