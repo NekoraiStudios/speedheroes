@@ -2,7 +2,7 @@
 
 	{{!-- Sheet Header --}}
 	<header class="sheet-header">
-		<img class="profile-img" src="{{system.img}}" data-edit="system.img" title="{{system.name}}" height="100" width="100"/>
+		<img src="{{img}}" data-action="editImage" data-field="img" alt="Portrait" height="100" width="100">
 		<div class="header-fields">
 			<h1 class="charname"><input name="system.name" type="text" value="{{system.name}}" placeholder="Name"/></h1>
 
@@ -27,7 +27,7 @@
 				</div>
 				
 				 <div class="resource flex-group-center">
-					<label for="system.robustness.value" class="resource-label">Robustness</label>
+					<label for="system.robustness.value" class="resource-label" data-action="rollAbilityCheck" data-ability="str">Robustness</label>
 					<div class="resource-content flexrow flex-center flex-between">
 					<input type="text" name="system.robustness.value" value="{{system.robustness.value}}" data-dtype="Number"/>
 					<span> / </span>
