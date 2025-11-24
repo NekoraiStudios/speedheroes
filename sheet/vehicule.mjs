@@ -2,12 +2,13 @@
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
-export class SpeedHeroesActorSheet extends foundry.applications.api.HandlebarsApplicationMixin(foundry.applications.sheets.ActorSheetV2) {
-	/** @override */
+const { HandlebarsApplicationMixin } = foundry.applications.api;
+const { ActorSheetV2 } = foundry.applications.sheets; // Access the base class here
+
+export class SpeedHeroesActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
 	static get defaultOptions() {
 		return foundry.utils.mergeObject(super.defaultOptions, {
 			classes: ['speedheroes', 'sheet', 'actor'],
-			template: "systems/speedheroes/templates/actor/vehicule-sheet.hbs",
 			tag: "form", // Still need this for automatic form handling
 			form: {
 				handler: this._onSubmitForm,
@@ -25,11 +26,64 @@ export class SpeedHeroesActorSheet extends foundry.applications.api.HandlebarsAp
 		});
 	}
 
-	/** @override 
+	/** @override */
 	get template() {
 		return `systems/speedheroes/templates/actor/${this.actor.type}-sheet.hbs`;
 	}
 
+	/** @override */
+	activateListeners(html,options) {
+		super.activateListeners(html,options);
+
+		// Render the item sheet for viewing/editing prior to the editable check.
+		
+		const editButtons = html.querySelector('.item-edit');
+		if (editButtons) {
+			editButtons.addEventListener('click', (ev) => {
+				const li = $(ev.currentTarget).parents('.item');
+				const item = this.actor.items.get(li.data('itemId'));
+				item.sheet.render(true);
+			});
+		}
+
+		// -------------------------------------------------------------
+		// Everything below here is only needed if the sheet is editable
+		if (!this.isEditable) return;
+
+		// Add Inventory Item
+		html.on('click', '.item-create', this._onItemCreate.bind(this));
+
+		// Delete Inventory Item
+		html.on('click', '.item-delete', (ev) => {
+			const li = $(ev.currentTarget).parents('.item');
+			const item = this.actor.items.get(li.data('itemId'));
+			item.delete();
+			li.slideUp(200, () => this.render(false));
+		});
+
+		// Active Effect management
+		html.on('click', '.effect-control', (ev) => {
+			const row = ev.currentTarget.closest('li');
+			const document =
+				row.dataset.parentId === this.actor.id
+					? this.actor
+					: this.actor.items.get(row.dataset.parentId);
+			onManageActiveEffect(ev, document);
+		});
+
+
+		// Drag events for macros.
+		if (this.actor.isOwner) {
+			let handler = (ev) => this._onDragStart(ev);
+			html.find('li.item').each((i, li) => {
+				if (li.classList.contains('inventory-header')) return;
+				li.setAttribute('draggable', true);
+				li.addEventListener('dragstart', handler, false);
+			});
+		}
+	}
+
+	
 	/**
 	 * This method is called upon form submission after form data is validated.
 	 * @param {Event} event The initial triggering submission event.
@@ -114,58 +168,7 @@ export class SpeedHeroesActorSheet extends foundry.applications.api.HandlebarsAp
 
 	/* -------------------------------------------- */
 
-	/** @override */
-	activateListeners(html,options) {
-		super.activateListeners(html,options);
-
-		// Render the item sheet for viewing/editing prior to the editable check.
-		
-		const editButtons = html.querySelector('.item-edit');
-		if (editButtons) {
-			editButtons.addEventListener('click', (ev) => {
-				const li = $(ev.currentTarget).parents('.item');
-				const item = this.actor.items.get(li.data('itemId'));
-				item.sheet.render(true);
-			});
-		}
-
-		// -------------------------------------------------------------
-		// Everything below here is only needed if the sheet is editable
-		if (!this.isEditable) return;
-
-		// Add Inventory Item
-		html.on('click', '.item-create', this._onItemCreate.bind(this));
-
-		// Delete Inventory Item
-		html.on('click', '.item-delete', (ev) => {
-			const li = $(ev.currentTarget).parents('.item');
-			const item = this.actor.items.get(li.data('itemId'));
-			item.delete();
-			li.slideUp(200, () => this.render(false));
-		});
-
-		// Active Effect management
-		html.on('click', '.effect-control', (ev) => {
-			const row = ev.currentTarget.closest('li');
-			const document =
-				row.dataset.parentId === this.actor.id
-					? this.actor
-					: this.actor.items.get(row.dataset.parentId);
-			onManageActiveEffect(ev, document);
-		});
-
-
-		// Drag events for macros.
-		if (this.actor.isOwner) {
-			let handler = (ev) => this._onDragStart(ev);
-			html.find('li.item').each((i, li) => {
-				if (li.classList.contains('inventory-header')) return;
-				li.setAttribute('draggable', true);
-				li.addEventListener('dragstart', handler, false);
-			});
-		}
-	}
-
+	
 	/**
 	 *	Handle events
 	 * 	@param {Event} event	 The originating click event
@@ -246,21 +249,5 @@ export class SpeedHeroesActorSheet extends foundry.applications.api.HandlebarsAp
 			});
 			return roll;
 		}
-	}
-	
-	
-	
-	// You can now remove your custom _renderHTML and _replaceHTML overrides.
-	// The mixin provides the concrete implementations of these methods.
-
-	/** @override */
-	activateListeners(html) {
-		super.activateListeners(html);
-		// ... your custom button listeners ...
-	}
-
-	/** @override */
-	async _updateObject(event, formData) {
-		return this.document.update(formData);
 	}
 }
