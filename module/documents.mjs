@@ -26,6 +26,11 @@ export class SystemActor extends Actor {
 		}
 		
 	}
+	
+	rollAbilityCheck() {
+		console.log("LET'S ROLL SOME DICE AT LEAST");
+		return {};
+	}
 }
 
 export class SystemItem extends Item {

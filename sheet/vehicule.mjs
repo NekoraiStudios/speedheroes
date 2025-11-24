@@ -28,6 +28,11 @@ export class VehiculeActorSheet extends HandlebarsApplicationMixin(ActorSheetV2)
 					initial: 'techs',
 				},
 			],
+			actions: {
+				rollAbilityCheck: this.#rollAbilityCheck,
+				//itemCreate: this.#itemCreate,
+				//itemDelete: this.#itemDelete
+			 }
 		});
 	}
 	/** @inheritDoc */
@@ -81,6 +86,11 @@ export class VehiculeActorSheet extends HandlebarsApplicationMixin(ActorSheetV2)
 		await this.document.update(formData.object)
 	}
 
+	static async #rollAbilityCheck(event, target) {
+		event.preventDefault()
+		const ability = target.dataset.ability
+		await this.actor.rollAbilityCheck(ability)
+	}
 	/**
 	 * This method is called upon form submission after form data is validated.
 	 * @param {Event} event The initial triggering submission event.
