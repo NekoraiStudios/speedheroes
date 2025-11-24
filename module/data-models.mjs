@@ -29,9 +29,8 @@ export class VehiculeDataModel extends ActorDataModel {
 				max: new NumberField({ required: true, integer: true, min: 0, initial: 3 })
 			}),
 			resistance: new SchemaField({
-				value: new NumberField({ required: true, integer: true, min: 0, initial: 0 }),
-				min: new NumberField({ required: true, integer: true, min: 0, initial: 0 }),
-				max: new NumberField({ required: true, integer: true, min: 0, initial: 3 })
+				value: new NumberField({ required: true, integer: true, min: 0, initial: 1 }),
+				max: new NumberField({ required: true, integer: true, min: 0, initial: 1 })
 			}),
 			pilot: new EmbeddedDocumentField(foundry.documents.BaseItem),
 			tech: new EmbeddedDocumentField(foundry.documents.BaseItem)

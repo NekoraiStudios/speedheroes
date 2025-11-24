@@ -19,9 +19,10 @@ export class SystemActor extends Actor {
 
 	prepareDerivedData() {
 		super.prepareDerivedData();
+		const system = this.system;
 		
-		if (this.type == "vehicule") {
-			console.log(this.system?.resistance);
+		if (this.type == "vehicule" && system?.resistance) {
+			system.hp = system.resistance
 		}
 		
 	}

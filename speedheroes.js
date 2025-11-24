@@ -32,16 +32,11 @@ Hooks.once("init", () => {
 
 
 	// Configure trackable attributes. Exemple from web site for other setting
-	/*
+	
 	CONFIG.Actor.trackableAttributes = {
-		hero: {
-			bar: ["resources.health", "resources.power", "goodness"],
-			value: ["progress"]
-		},
-		pawn: {
-			bar: ["resources.health", "resources.power"],
-			value: []
+		vehicule: {
+			bar: ["resistance"]
 		}
 	};
-	*/
+
 });
