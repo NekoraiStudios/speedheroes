@@ -17,7 +17,7 @@ Hooks.once("init", () => {
 	};
 	
 	foundry.documents.collections.Actors.registerSheet('speedheroes', SpeedHeroesActorSheet, {
-		type: ['vehicule','pilot'],
+		types: ['vehicule','pilot'],
 		makeDefault: true,
 		label: 'SPEEDHEROES.SheetLabels.Actor',
 	});
