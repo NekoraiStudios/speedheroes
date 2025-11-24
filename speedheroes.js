@@ -2,6 +2,7 @@ import { SystemActor, SystemItem } from "./module/documents.mjs";
 import { VehiculeDataModel, PilotDataModel, TechDataModel } from "./module/data-models.mjs";
 import { VehiculeActorSheet } from "./sheet/vehicule.mjs";
 import { PilotActorSheet } from "./sheet/pilot.mjs";
+import { SpeedHeroesBaseDice } from "./module/speedHeroesBaseDice.mjs";
 
 
 Hooks.once("init", () => {
@@ -18,26 +19,29 @@ Hooks.once("init", () => {
 		tech: TechDataModel
 	};
 	
+	// register vehicule sheet
 	foundry.documents.collections.Actors.registerSheet('speedheroes', VehiculeActorSheet, {
 		types: ['vehicule'],
 		makeDefault: true,
 		label: 'SPEEDHEROES.SheetLabels.Vehicule',
 	});
+	// register pilot sheet
 	foundry.documents.collections.Actors.registerSheet('speedheroes', PilotActorSheet, {
-			types: ['pilot'],
-			makeDefault: true,
-			label: 'SPEEDHEROES.SheetLabels.Pilot',
-		});
-	
+		types: ['pilot'],
+		makeDefault: true,
+		label: 'SPEEDHEROES.SheetLabels.Pilot',
+	});
+
+	// Load partials templates in memory
 	foundry.applications.handlebars.loadTemplates([
 		"systems/speedheroes/templates/actor/parts/actor-equipment.hbs",
 		"systems/speedheroes/templates/actor/parts/actor-pilot.hbs",
 		"systems/speedheroes/templates/actor/parts/active-effects.hbs"
 	]);
 
+	// Configs
+	CONFIG.Dice.terms['b'] = SpeedHeroesBaseDice;
 
-	// Configure trackable attributes. Exemple from web site for other setting
-	
 	CONFIG.Actor.trackableAttributes = {
 		vehicle: {
 			bar: [

@@ -29,7 +29,7 @@ export class SystemActor extends Actor {
 	
 	rollAbilityCheck(ability) {
 		let label = ability ?? '';
-		let roll = new foundry.dice.Roll("3d12");
+		let roll = new foundry.dice.Roll("3db");
 		roll.toMessage({
 			speaker: ChatMessage.getSpeaker({ actor: this.actor }),
 			flavor: label,
