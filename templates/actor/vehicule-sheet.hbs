@@ -1,10 +1,10 @@
-<form class="{{cssClass}} {{type}} flexcol" autocomplete="off" method="post">
+<form class="{{cssClass}} {{type}} flexcol" autocomplete="off">
 
 	{{!-- Sheet Header --}}
 	<header class="sheet-header">
-		<img class="profile-img" src="{{img}}" data-edit="img" title="{{name}}" height="100" width="100"/>
+		<img class="profile-img" src="{{system.img}}" data-edit="system.img" title="{{system.name}}" height="100" width="100"/>
 		<div class="header-fields">
-			<h1 class="charname"><input name="name" type="text" value="{{name}}" placeholder="Name"/></h1>
+			<h1 class="charname"><input name="system.name" type="text" value="{{system.name}}" placeholder="Name"/></h1>
 
 			<div class="resources grid grid-3col">
 
