@@ -83,6 +83,7 @@ export class VehiculeActorSheet extends HandlebarsApplicationMixin(ActorSheetV2)
 	static async #onSubmitForm(event, form, formData) {
 		console.log(formData)
 		event.preventDefault()
+		formData.object.name = formData.object.name ?? this.document.name; 
 		await this.document.update(formData.object)
 	}
 

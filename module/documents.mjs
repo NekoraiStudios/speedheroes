@@ -27,9 +27,16 @@ export class SystemActor extends Actor {
 		
 	}
 	
-	rollAbilityCheck() {
-		console.log("LET'S ROLL SOME DICE AT LEAST");
-		return {};
+	rollAbilityCheck(ability) {
+		let label = ability ?? '';
+		let roll = new foundry.dice.Roll("3d12");
+		roll.toMessage({
+			speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+			flavor: label,
+			rollMode: game.settings.get('core', 'rollMode'),
+		});
+		console.log(roll);
+		return roll;
 	}
 }
 
