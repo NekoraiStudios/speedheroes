@@ -36,9 +36,9 @@ export class SpeedHeroesActorSheet extends HandlebarsApplicationMixin(ActorSheet
 		
 		context.tech = context.document.items.filter(item => item.type === "tech");
 		
-		if (context.system.biography) {
-			context.enrichedBiography = await foundry.applications.ux.TextEditor.enrichHTML(
-				context.system.biography,
+		if (context.system.description) {
+			context.enrichedDescription = await foundry.applications.ux.TextEditor.enrichHTML(
+				context.system.description,
 				{
 					async: true, // Required in v13 for asynchronous enrichment
 					rollData: context.document.getRollData(),
