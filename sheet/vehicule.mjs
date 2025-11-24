@@ -243,6 +243,7 @@ export class SpeedHeroesActorSheet extends foundry.applications.sheets.ActorShee
 	}
 	
 	/** @override */
+	/*
 	async _renderHTML(_context,options) {
 		const templatePath = this.template;
 		await foundry.applications.handlebars.loadTemplates([
@@ -256,8 +257,9 @@ export class SpeedHeroesActorSheet extends foundry.applications.sheets.ActorShee
 	}
 	
 	/** @override */
+	/*
 	async _replaceHTML(result,context,options) {
 		context.innerHTML = "";
 		context.append(result);
-	}
+	}*/
 }
