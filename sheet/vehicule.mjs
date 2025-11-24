@@ -31,15 +31,20 @@ export class SpeedHeroesActorSheet extends HandlebarsApplicationMixin(ActorSheet
 	 */
 	async _prepareContext(options) {
 		// Call your existing getData method logic to populate the context
-		const context = await this.getData(options); 
+		const context = await super._prepareContext(options);
 		
-		// You might need to adjust getData to return a slightly different shape
-		// if the V2 framework expects specific properties like 'document'
+		context.tech = context.document.items.filter(item => item.type === "tech");
 		
-		// Ensure the document instance is always available in the context
-		context.document = this.document; 
-		context.actor = this.document; // Common alias
-		context.data = context.system; // Common alias for system data
+		if (context.system.biography) {
+			context.enrichedBiography = await foundry.applications.ux.TextEditor.enrichHTML(
+				context.system.biography,
+				{
+					async: true, // Required in v13 for asynchronous enrichment
+					rollData: context.document.getRollData(),
+					relativeTo: context.document,
+				}
+			);
+		}
 
 		return context;
 	}
@@ -119,74 +124,6 @@ export class SpeedHeroesActorSheet extends HandlebarsApplicationMixin(ActorSheet
 		return this.document.update(formData);
 	}
 	
-	/* -------------------------------------------- */
-
-	/** @override */
-	async getData() {
-		// Retrieve the data structure from the base sheet. You can inspect or log
-		// the context variable to see the structure, but some key properties for
-		// sheets are the actor object, the data object, whether or not it's
-		// editable, the items array, and the effects array.
-		const context = super.getData();
-
-		// Use a safe clone of the actor data for further operations.
-		const actorData = this.document.toObject(false);
-
-		// Add the actor's data to context.data for easier access, as well as flags.
-		context.system = actorData.system;
-		context.flags = actorData.flags;
-
-		// Adding a pointer to CONFIG.BOILERPLATE
-		context.config = CONFIG.BOILERPLATE;
-
-		// Prepare character data and items.
-		if (actorData.type == 'character') {
-			this._prepareItems(context);
-			this._prepareCharacterData(context);
-		}
-
-		// Prepare NPC data and items.
-		if (actorData.type == 'npc') {
-			this._prepareItems(context);
-		}
-
-		// Enrich biography info for display
-		// Enrichment turns text like `[[/r 1d20]]` into buttons
-		context.enrichedBiography = await TextEditor.enrichHTML(
-			this.actor.system.biography,
-			{
-				// Whether to show secret blocks in the finished html
-				secrets: this.document.isOwner,
-				// Necessary in v11, can be removed in v12
-				async: true,
-				// Data to fill in for inline rolls
-				rollData: this.actor.getRollData(),
-				// Relative UUID resolution
-				relativeTo: this.actor,
-			}
-		);
-
-		return context;
-	}
-
-	/**
-	 * Character-specific context modifications
-	 *
-	 * @param {object} context The context object to mutate
-	 */
-	_prepareCharacterData(context) {
-		// This is where you can enrich character-specific editor fields
-		// or setup anything else that's specific to this type
-	}
-
-	/**
-	 * Organize and classify Items for Actor sheets.
-	 *
-	 * @param {object} context The context object to mutate
-	 */
-	_prepareItems(context) {
-
-	}
 
 	/* -------------------------------------------- */
 
