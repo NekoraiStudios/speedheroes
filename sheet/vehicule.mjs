@@ -24,6 +24,19 @@ export class SpeedHeroesActorSheet extends foundry.applications.sheets.ActorShee
 		return `systems/speedheroes/templates/actor/${this.actor.type}-sheet.hbs`;
 	}
 
+	/**
+	 * This method is called upon form submission after form data is validated.
+	 * @param {Event} event The initial triggering submission event.
+	 * @param {object} formData The object of validated form data with which to update the document.
+	 * @returns {Promise<Document>} A Promise which resolves once the update operation has completed.
+	 */
+	async _updateObject(event, formData) {
+		// formData is already flattened (e.g., { "system.attributes.str.value": 10 })
+
+		// Apply the data to the document using the document's built-in update method
+		return this.document.update(formData);
+	}
+	
 	/* -------------------------------------------- */
 
 	/** @override */
@@ -100,11 +113,15 @@ export class SpeedHeroesActorSheet extends foundry.applications.sheets.ActorShee
 		super.activateListeners(html,options);
 
 		// Render the item sheet for viewing/editing prior to the editable check.
-		html.on('click', '.item-edit', (ev) => {
-			const li = $(ev.currentTarget).parents('.item');
-			const item = this.actor.items.get(li.data('itemId'));
-			item.sheet.render(true);
-		});
+		
+		const editButtons = html.querySelector('.item-edit');
+		if (editButtons) {
+			editButtons.addEventListener('click', (ev) => {
+				const li = $(ev.currentTarget).parents('.item');
+				const item = this.actor.items.get(li.data('itemId'));
+				item.sheet.render(true);
+			});
+		}
 
 		// -------------------------------------------------------------
 		// Everything below here is only needed if the sheet is editable
@@ -144,9 +161,9 @@ export class SpeedHeroesActorSheet extends foundry.applications.sheets.ActorShee
 	}
 
 	/**
-	 *  Handle events
+	 *	Handle events
 	 * 	@param {Event} event	 The originating click event
-	  * @private
+	 * @private
 	 */
 	_onEvent(event) {
 		console.log(event);
