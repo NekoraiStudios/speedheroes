@@ -247,7 +247,7 @@ export class SpeedHeroesActorSheet extends foundry.applications.api.HandlebarsAp
 	static get DEFAULT_OPTIONS() {
 		return foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
 			// ... (your existing options)
-			template: template(),
+			template: "systems/speedheroes/templates/actor/vehicule-sheet.hbs",
 			tag: "form", // Still need this for automatic form handling
 			form: {
 				handler: this._onSubmitForm,
