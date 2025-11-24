@@ -1,6 +1,8 @@
 import { SystemActor, SystemItem } from "./module/documents.mjs";
 import { VehiculeDataModel, PilotDataModel, TechDataModel } from "./module/data-models.mjs";
-import { SpeedHeroesActorSheet } from "./sheet/vehicule.mjs";
+import { VehiculeActorSheet } from "./sheet/vehicule.mjs";
+import { PilotActorSheet } from "./sheet/pilot.mjs";
+
 
 Hooks.once("init", () => {
 	// Configure custom Document implementations.
@@ -16,11 +18,16 @@ Hooks.once("init", () => {
 		tech: TechDataModel
 	};
 	
-	foundry.documents.collections.Actors.registerSheet('speedheroes', SpeedHeroesActorSheet, {
-		types: ['vehicule','pilot'],
+	foundry.documents.collections.Actors.registerSheet('speedheroes', VehiculeActorSheet, {
+		types: ['vehicule'],
 		makeDefault: true,
-		label: 'SPEEDHEROES.SheetLabels.Actor',
+		label: 'SPEEDHEROES.SheetLabels.Vehicule',
 	});
+	foundry.documents.collections.Actors.registerSheet('speedheroes', PilotActorSheet, {
+			types: ['pilot'],
+			makeDefault: true,
+			label: 'SPEEDHEROES.SheetLabels.Pilot',
+		});
 	
 	foundry.applications.handlebars.loadTemplates([
 		"systems/speedheroes/templates/actor/parts/actor-equipment.hbs",

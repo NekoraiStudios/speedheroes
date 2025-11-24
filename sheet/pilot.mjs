@@ -5,7 +5,7 @@
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets; // Access the base class here
 
-export class VehiculeActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
+export class PilotActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
 	constructor(object, options) {
 		super(object, options)
 	}
@@ -33,7 +33,7 @@ export class VehiculeActorSheet extends HandlebarsApplicationMixin(ActorSheetV2)
 	/** @inheritDoc */
 	static PARTS = {
 		form: {
-			template: `systems/speedheroes/templates/actor/vehicule-sheet.hbs`
+			template: `systems/speedheroes/templates/actor/pilot-sheet.hbs`
 		}
 	}
 	
@@ -54,8 +54,6 @@ export class VehiculeActorSheet extends HandlebarsApplicationMixin(ActorSheetV2)
 		// Call your existing getData method logic to populate the context
 		const context = await super._prepareContext(options);
 		
-		context.tech = context.document.items.filter(item => item.type === "tech");
-		
 		context.system = context.document.system;
 		/*
 		if (context.document.system.description) {
@@ -71,7 +69,6 @@ export class VehiculeActorSheet extends HandlebarsApplicationMixin(ActorSheetV2)
 		return context;
 	}
 
-	
 	/**
 	 * handling data
 	 */
