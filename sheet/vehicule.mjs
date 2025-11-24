@@ -10,6 +10,7 @@ export class SpeedHeroesActorSheet extends HandlebarsApplicationMixin(ActorSheet
 		return foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
 			classes: ['speedheroes', 'sheet', 'actor'],
 			tag: "form", 
+			template: "systems/speedheroes/templates/actor/vehicule-sheet.hbs",
 			form: {
 				handler: this._onSubmitForm,
 				submitOnChange: true,
@@ -50,7 +51,7 @@ export class SpeedHeroesActorSheet extends HandlebarsApplicationMixin(ActorSheet
 	}
 
 	/** @override */
-	get template() {
+	async getTemplate() {
 		return `systems/speedheroes/templates/actor/${this.actor.type}-sheet.hbs`;
 	}
 
