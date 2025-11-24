@@ -54,7 +54,7 @@ export class SpeedHeroesActorSheet extends HandlebarsApplicationMixin(ActorSheet
 	get template() {
 		const type = this.document?.type || 'vehicule'; // Fallback type
 		console.log(type)
-		return `systems/speedheroes/templates/actor/${type}-sheet.hbs`;
+		return `systems/speedheroes/templates/actor/test-sheet.hbs`;
 	}
 
 	/** @override */
