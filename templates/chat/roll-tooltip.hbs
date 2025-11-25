@@ -1,0 +1,12 @@
+<!-- systems/mysystem/templates/chat/my-tooltip.hbs -->
+<div class="speedheroes-roll-tooltip">
+	<h3>Detailed Breakdown</h3>
+	<p>Original Roll: **{{formula}}**</p>
+	<div class="roll-details">
+		{{#each results}}
+			<span class="die-result">
+				[{{result}}]
+			</span>
+		{{/each}}
+	</div>
+</div>
