@@ -36,8 +36,7 @@ Hooks.once("init", () => {
 	foundry.applications.handlebars.loadTemplates([
 		"systems/speedheroes/templates/actor/parts/actor-equipment.hbs",
 		"systems/speedheroes/templates/actor/parts/actor-pilot.hbs",
-		"systems/speedheroes/templates/actor/parts/active-effects.hbs",
-		"systems/speedheroes/templates/chat/roll-tooltip.hbs"
+		"systems/speedheroes/templates/actor/parts/active-effects.hbs"
 	]);
 
 	// Configs
