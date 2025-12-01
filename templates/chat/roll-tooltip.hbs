@@ -4,13 +4,13 @@
 		<header class="dice-formula">{{formula}}</header>
 		
 		<!-- Iterate over each distinct dice term (e.g., the 2d6 part and the 1d4 part) -->
-		{{#each terms}}
+		{{#each dice}}
 		<div class="dice-term">
-			<strong>{{formula}}</strong> <!-- Formula for this specific term (e.g., 2d6) -->
+			<strong>{{this.formula}}</strong> <!-- Formula for this specific term (e.g., 2d6) -->
 			<ol class="dice-rolls">
 				<!-- Iterate over the actual results within this term -->
-				{{#each results}}
-					{{result}}
+				{{#each this.results}}
+					{{this.result}}
 				{{/each}}
 			</ol>
 		</div>
