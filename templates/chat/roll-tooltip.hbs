@@ -1,21 +1,20 @@
 <!-- systems/mysystem/templates/chat/my-tooltip.hbs -->
-<div class="speedheroes-roll-tooltip">
-	<h3>Detailed Breakdown</h3>
-	<p>Original Roll: **{{formula}}**</p>
-	<div class="roll-details">
-	<!-- Iterate over each distinct dice term (e.g., the 2d6 part and the 1d4 part) -->
+<section class="tooltip-part">
+	<div class="dice">
+		<header class="dice-formula">{{formula}}</header>
+		
+		<!-- Iterate over each distinct dice term (e.g., the 2d6 part and the 1d4 part) -->
 		{{#each dice}}
 		<div class="dice-term">
 			<strong>{{formula}}</strong> <!-- Formula for this specific term (e.g., 2d6) -->
 			<ol class="dice-rolls">
 				<!-- Iterate over the actual results within this term -->
 				{{#each results}}
-				<li class="roll">
 					{{result}}
-				</li>
 				{{/each}}
 			</ol>
 		</div>
 		{{/each}}
+
 	</div>
-</div>
+</section>
