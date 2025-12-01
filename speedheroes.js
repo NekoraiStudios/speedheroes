@@ -40,8 +40,8 @@ Hooks.once("init", () => {
 	]);
 
 	// Configs
-	CONFIG.Dice.rolls[0].CHAT_TEMPLATE = "systems/speedheroes/templates/chat/roll-message.hbs";
-	CONFIG.Dice.rolls[0].TOOLTIP_TEMPLATE = "systems/speedheroes/templates/chat/roll-tooltip.hbs";
+	//CONFIG.Dice.rolls[0].CHAT_TEMPLATE = "systems/speedheroes/templates/chat/roll-message.hbs";
+	//CONFIG.Dice.rolls[0].TOOLTIP_TEMPLATE = "systems/speedheroes/templates/chat/roll-tooltip.hbs";
 	CONFIG.Dice.terms['b'] = SpeedHeroesBaseDice;
 
 	CONFIG.Actor.trackableAttributes = {
