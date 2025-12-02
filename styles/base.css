@@ -203,11 +203,11 @@
 	text-align: center;
 }
 
-/* Styles limited to boilerplate sheets */
-.boilerplate .item-form {
+/* Styles limited to speedheroes sheets */
+.speedheroes .item-form {
 	font-family: "Roboto", sans-serif;
 }
-.boilerplate .sheet-header {
+.speedheroes .sheet-header {
 	flex: 0 auto;
 	overflow: hidden;
 	display: flex;
@@ -216,43 +216,44 @@
 	justify-content: flex-start;
 	margin-bottom: 10px;
 }
-.boilerplate .sheet-header .profile-img {
+.speedheroes .sheet-header .profile-img {
 	flex: 0 0 100px;
 	height: 100px;
 	margin-right: 10px;
 }
-.boilerplate .sheet-header .header-fields {
+.speedheroes .sheet-header .header-fields {
 	flex: 1;
 }
-.boilerplate .sheet-header h1.charname {
+.speedheroes .sheet-header h1.charname {
 	height: 50px;
 	padding: 0px;
 	margin: 5px 0;
 	border-bottom: 0;
 }
-.boilerplate .sheet-header h1.charname input {
+.speedheroes .sheet-header h1.charname input {
 	width: 100%;
 	height: 100%;
 	margin: 0;
 }
-.boilerplate .sheet-tabs {
+.speedheroes .sheet-tabs {
 	flex: 0;
 }
-.boilerplate .sheet-body,
-.boilerplate .sheet-body .tab,
-.boilerplate .sheet-body .tab .editor {
+.speedheroes .sheet-body,
+.speedheroes .sheet-body .tab,
+.speedheroes .sheet-body .tab .editor {
 	height: 100%;
 }
-.boilerplate .tox .tox-editor-container {
+.speedheroes .tox .tox-editor-container {
 	background: #fff;
 }
-.boilerplate .tox .tox-edit-area {
+.speedheroes .tox .tox-edit-area {
 	padding: 0 8px;
 }
-.boilerplate .resource-label {
+.speedheroes .resource-label {
 	font-weight: bold;
+	cursor: pointer;
 }
-.boilerplate .items-header {
+.speedheroes .items-header {
 	height: 28px;
 	margin: 2px 0;
 	padding: 0;
@@ -261,17 +262,17 @@
 	border: 2px groove #eeede0;
 	font-weight: bold;
 }
-.boilerplate .items-header > * {
+.speedheroes .items-header > * {
 	font-size: 14px;
 	text-align: center;
 }
-.boilerplate .items-header .item-name {
+.speedheroes .items-header .item-name {
 	font-weight: bold;
 	padding-left: 5px;
 	text-align: left;
 	display: flex;
 }
-.boilerplate .items-list {
+.speedheroes .items-list {
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -279,12 +280,12 @@
 	scrollbar-width: thin;
 	color: #444;
 }
-.boilerplate .items-list .item-list {
+.speedheroes .items-list .item-list {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
-.boilerplate .items-list .item-name {
+.speedheroes .items-list .item-name {
 	flex: 2;
 	margin: 0;
 	overflow: hidden;
@@ -293,46 +294,46 @@
 	align-items: center;
 	display: flex;
 }
-.boilerplate .items-list .item-name h3, .boilerplate .items-list .item-name h4 {
+.speedheroes .items-list .item-name h3, .speedheroes .items-list .item-name h4 {
 	margin: 0;
 	white-space: nowrap;
 	overflow-x: hidden;
 }
-.boilerplate .items-list .item-controls {
+.speedheroes .items-list .item-controls {
 	display: flex;
 	flex: 0 0 100px;
 	justify-content: flex-end;
 }
-.boilerplate .items-list .item-controls a {
+.speedheroes .items-list .item-controls a {
 	font-size: 12px;
 	text-align: center;
 	margin: 0 6px;
 }
-.boilerplate .items-list .item {
+.speedheroes .items-list .item {
 	align-items: center;
 	padding: 0 2px;
 	border-bottom: 1px solid #c9c7b8;
 }
-.boilerplate .items-list .item:last-child {
+.speedheroes .items-list .item:last-child {
 	border-bottom: none;
 }
-.boilerplate .items-list .item .item-name {
+.speedheroes .items-list .item .item-name {
 	color: #191813;
 }
-.boilerplate .items-list .item .item-name .item-image {
+.speedheroes .items-list .item .item-name .item-image {
 	flex: 0 0 30px;
 	height: 30px;
 	background-size: 30px;
 	border: none;
 	margin-right: 5px;
 }
-.boilerplate .items-list .item-prop {
+.speedheroes .items-list .item-prop {
 	text-align: center;
 	border-left: 1px solid #c9c7b8;
 	border-right: 1px solid #c9c7b8;
 	font-size: 12px;
 }
-.boilerplate .items-list .items-header {
+.speedheroes .items-list .items-header {
 	height: 28px;
 	margin: 2px 0;
 	padding: 0;
@@ -341,27 +342,27 @@
 	border: 2px groove #eeede0;
 	font-weight: bold;
 }
-.boilerplate .items-list .items-header > * {
+.speedheroes .items-list .items-header > * {
 	font-size: 12px;
 	text-align: center;
 }
-.boilerplate .items-list .items-header .item-name {
+.speedheroes .items-list .items-header .item-name {
 	padding-left: 5px;
 	text-align: left;
 }
-.boilerplate .item-formula {
+.speedheroes .item-formula {
 	flex: 0 0 200px;
 	padding: 0 8px;
 }
-.boilerplate .effects .item .effect-source,
-.boilerplate .effects .item .effect-duration,
-.boilerplate .effects .item .effect-controls {
+.speedheroes .effects .item .effect-source,
+.speedheroes .effects .item .effect-duration,
+.speedheroes .effects .item .effect-controls {
 	text-align: center;
 	border-left: 1px solid #c9c7b8;
 	border-right: 1px solid #c9c7b8;
 	font-size: 12px;
 }
-.boilerplate .effects .item .effect-controls {
+.speedheroes .effects .item .effect-controls {
 	border: none;
 }
 
@@ -379,7 +380,7 @@
 	line-height: 48px;
 	float: left;
 	margin-right: 1px;
-	background-image: url(../../icons/svg/d12-grey.svg);
+	background-image: url(/icons/svg/d12-grey.svg);
 	background-repeat: no-repeat;
 	background-size: 48px 48px;
 	font-size: var(--font-size-16);
