@@ -55,6 +55,8 @@ export class PilotActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
 		const context = await super._prepareContext(options);
 		
 		context.system = context.document.system;
+		
+		context.actor = context.document;
 		/*
 		if (context.document.system.description) {
 			context.enrichedDescription = await foundry.applications.ux.TextEditor.enrichHTML(

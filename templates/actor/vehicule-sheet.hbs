@@ -2,9 +2,9 @@
 
 	{{!-- Sheet Header --}}
 	<header class="sheet-header">
-		<img src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+		<img src="{{actor.img}}" data-action="editImage" title="{{actor.name}}" height="100" width="100"/>
 		<div class="header-fields">
-			<h1 class="charname"><input name="actor.name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
+			<h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
 
 			<div class="resources grid grid-3col">
 
@@ -37,10 +37,10 @@
 
 			</div>
 		</div>
-		<div>
-			<input type="button" data-action="onRoll" data-rollType="main" value="LET'S ROLLOUT!!!"/>
-		</div>
 	</header>
+	<section class="speedheroes rollout">
+		<input type="button" data-action="onRoll" data-rollType="main" value="LET'S ROLLOUT!!!"/>
+	</section>
 
 	{{!-- Sheet Tab Navigation --}}
 	<nav class="sheet-tabs tabs" data-group="primary">
