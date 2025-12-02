@@ -165,8 +165,8 @@ export class VehiculeActorSheet extends HandlebarsApplicationMixin(ActorSheetV2)
 		const dataset = element.dataset;
 		console.log(element,dataset);
 		// Handle item rolls.
-		if (dataset.rollType) {
-			switch (dataset.rollType) {
+		if (dataset.rolltype) {
+			switch (dataset.rolltype) {
 				case "item":
 					const itemId = element.closest('.item').dataset.itemId;
 					const item = this.actor.items.get(itemId);
