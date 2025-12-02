@@ -33,6 +33,7 @@ export class SystemActor extends Actor {
 		roll.toMessage({
 			speaker: ChatMessage.getSpeaker({ actor: this.actor }),
 			flavor: label,
+			nbStarNeeded: this.actor?.system[ability]?.value,
 			rollMode: game.settings.get('core', 'rollMode'),
 		});
 		console.log(roll);

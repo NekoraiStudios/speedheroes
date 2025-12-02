@@ -365,7 +365,25 @@
 	border: none;
 }
 
-.dice-tooltip .dice-rolls .roll.speedheroesbasedice
+.dice-result .dice-rolls
 {
-	background-size: cover;
+	list-style: none;
+	margin: 5px 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+.dice-result .dice-rolls .roll.speedheroesbasedice {
+	position: relative;
+	min-width: 48px;
+	line-height: 48px;
+	float: left;
+	margin-right: 1px;
+	background-image: url(../icons/svg/d12-grey.svg);
+	background-repeat: no-repeat;
+	background-size: 48px 48px;
+	font-size: var(--font-size-16);
+	color: #000;
+	font-weight: bold;
+	text-align: center;
 }
