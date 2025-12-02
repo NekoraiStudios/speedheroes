@@ -29,10 +29,9 @@ export class SystemActor extends Actor {
 	
 	rollAbilityCheck(ability) {
 		let label = ability ?? '';
-		console.log(this.actor.system[ability]);
-		let roll = new foundry.dice.Roll("3db",{nbStarNeeded: this.actor.system?.ability.value});
+		let roll = new foundry.dice.Roll("1db",{nbStarNeeded: this?.system[ability]?.value});
 		roll.toMessage({
-				speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+				speaker: ChatMessage.getSpeaker({ actor: this }),
 				flavor: label
 			},{
 				rollMode: game.settings.get('core', 'rollMode')

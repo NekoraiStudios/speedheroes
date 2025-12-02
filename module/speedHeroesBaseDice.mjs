@@ -33,4 +33,12 @@ export class SpeedHeroesBaseDice extends foundry.dice.terms.Die {
 			12: '<img src="systems/speedheroes/ui/dice/SpeedHeroes_0-3.png" />',
 		}[result.result];
 	}
+	
+	/** @override */
+	getResultCSS(result) {
+		return [
+			this.constructor.name.toLowerCase(),
+			`${result.result}`,
+		];
+	}
 }

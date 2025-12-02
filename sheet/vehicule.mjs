@@ -62,6 +62,8 @@ export class VehiculeActorSheet extends HandlebarsApplicationMixin(ActorSheetV2)
 		context.tech = context.document.items.filter(item => item.type === "tech");
 		
 		context.system = context.document.system;
+		
+		context.actor = context.document
 		/*
 		if (context.document.system.description) {
 			context.enrichedDescription = await foundry.applications.ux.TextEditor.enrichHTML(
