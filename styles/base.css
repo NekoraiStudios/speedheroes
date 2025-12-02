@@ -379,11 +379,15 @@
 	line-height: 48px;
 	float: left;
 	margin-right: 1px;
-	background-image: url(../icons/svg/d12-grey.svg);
+	background-image: url(../../icons/svg/d12-grey.svg);
 	background-repeat: no-repeat;
 	background-size: 48px 48px;
 	font-size: var(--font-size-16);
 	color: #000;
 	font-weight: bold;
 	text-align: center;
+}
+.dice-result .dice-rolls .roll.speedheroesbasedice img {
+	width: 48px;
+	height: 48px;
 }
