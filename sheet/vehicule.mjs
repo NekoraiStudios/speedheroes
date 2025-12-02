@@ -30,6 +30,7 @@ export class VehiculeActorSheet extends HandlebarsApplicationMixin(ActorSheetV2)
 			],
 			actions: {
 				rollAbilityCheck: this.#rollAbilityCheck,
+				onRoll: this.#onRoll,
 				//itemCreate: this.#itemCreate,
 				//itemDelete: this.#itemDelete
 			 }
@@ -157,7 +158,7 @@ export class VehiculeActorSheet extends HandlebarsApplicationMixin(ActorSheetV2)
 	 * @param {Event} event	 The originating click event
 	 * @private
 	 */
-	static onRoll(event) {
+	static async #onRoll(event) {
 		event.preventDefault();
 		const element = event.currentTarget;
 		const dataset = element.dataset;
@@ -171,7 +172,7 @@ export class VehiculeActorSheet extends HandlebarsApplicationMixin(ActorSheetV2)
 					if (item) return item.roll();
 				case "main":
 					let label = 'Perform roll';
-					let roll = new Roll("3d12", this.actor.getRollData());
+					let roll = new Roll("3db", this.actor.getRollData());
 					let message = roll.toMessage({
 						speaker: ChatMessage.getSpeaker({ actor: this.actor }),
 						flavor: label,
