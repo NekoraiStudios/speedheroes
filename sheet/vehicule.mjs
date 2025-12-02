@@ -87,6 +87,7 @@ export class VehiculeActorSheet extends HandlebarsApplicationMixin(ActorSheetV2)
 		console.log(formData)
 		event.preventDefault()
 		formData.object.name = formData.object.name ?? this.document.name; 
+		formData.object.img = formData.object.img ?? this.document.img;
 		await this.document.update(formData.object)
 	}
 
@@ -160,7 +161,7 @@ export class VehiculeActorSheet extends HandlebarsApplicationMixin(ActorSheetV2)
 	 */
 	static async #onRoll(event) {
 		event.preventDefault();
-		const element = event.currentTarget;
+		const element = event.target;
 		const dataset = element.dataset;
 		console.log(element,dataset);
 		// Handle item rolls.
