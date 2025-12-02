@@ -364,3 +364,8 @@
 .boilerplate .effects .item .effect-controls {
 	border: none;
 }
+
+.dice-tooltip .dice-rolls .roll.speedheroesbasedice
+{
+	background-size: cover;
+}

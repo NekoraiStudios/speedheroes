@@ -1,20 +1,28 @@
-<!-- systems/mysystem/templates/chat/my-tooltip.hbs -->
-<section class="tooltip-part">
-	<div class="dice">
-		<header class="dice-formula">{{formula}}</header>
-		
-		<!-- Iterate over each distinct dice term (e.g., the 2d6 part and the 1d4 part) -->
-		{{#each dice}}
-		<div class="dice-term">
-			<strong>{{this.formula}}</strong> <!-- Formula for this specific term (e.g., 2d6) -->
-			<ol class="dice-rolls">
-				<!-- Iterate over the actual results within this term -->
-				{{#each this.results}}
-					{{this.result}}
+{{#if parts.length}}
+<div class="dice-tooltip">
+	<div class="wrapper">
+		{{#each parts}}
+		<section class="tooltip-part">
+			<div class="dice">
+				<header class="part-header flexrow">
+					{{#if icon}}
+					<span class="part-method" data-tooltip aria-label="{{ localize method }}">
+						{{{ icon }}}
+					</span>
+					{{/if}}
+					<span class="part-formula">{{this.formula}}</span>
+					{{#if this.flavor}}<span class="part-flavor">{{this.flavor}}</span>{{/if}}
+					<span class="part-total">{{this.total}}</span>
+					test
+				</header>
+				<ol class="dice-rolls">
+				{{#each this.rolls}}
+				<li class="roll {{this.classes}}">{{{this.result}}}</li>
 				{{/each}}
-			</ol>
-		</div>
+				</ol>
+			</div>
+		</section>
 		{{/each}}
-
 	</div>
-</section>
+</div>
+{{/if}}
