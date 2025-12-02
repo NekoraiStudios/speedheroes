@@ -1,10 +1,12 @@
 {{#if parts.length}}
 	{{#each parts}}
-	<ol class="dice-rolls">
-		{{#each this.rolls}}
-		<li class="roll {{this.classes}}">{{{this.result}}}</li>
-		{{/each}}
-	</ol>
+	<div class="dice">
+		<ol class="dice-rolls">
+			{{#each this.rolls}}
+			<li class="roll {{this.classes}}">{{{this.result}}}</li>
+			{{/each}}
+		</ol>
+	</div>
 	{{/each}}
 {{/if}}
 <div class="dice-tooltip">
