@@ -163,7 +163,7 @@ export class VehiculeActorSheet extends HandlebarsApplicationMixin(ActorSheetV2)
 		event.preventDefault();
 		const element = event.target;
 		const dataset = element.dataset;
-		console.log(element,dataset);
+		
 		// Handle item rolls.
 		if (dataset.rolltype) {
 			switch (dataset.rolltype) {
@@ -172,12 +172,13 @@ export class VehiculeActorSheet extends HandlebarsApplicationMixin(ActorSheetV2)
 					const item = this.actor.items.get(itemId);
 					if (item) return item.roll();
 				case "main":
+					console.log(element,dataset);
 					let label = 'Perform roll';
-					let roll = new Roll("3db", this.actor.getRollData());
+					let roll = new foundry.dice.Roll("3db", this.document.getRollData());
 					let message = roll.toMessage({
-						speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+						speaker: ChatMessage.getSpeaker({ actor: this.document }),
 						flavor: label,
-					},{create:false,rollMode: game.settings.get('core', 'rollMode')});
+					},{rollMode: game.settings.get('core', 'rollMode')});
 					return message;
 			}
 		}
@@ -185,9 +186,9 @@ export class VehiculeActorSheet extends HandlebarsApplicationMixin(ActorSheetV2)
 		// Handle rolls that supply the formula directly.
 		if (dataset.roll) {
 			let label = dataset.label ? `[ability] ${dataset.label}` : '';
-			let roll = new Roll(dataset.roll, this.actor.getRollData());
+			let roll = new foundry.dice.Roll(dataset.roll, this.documentgetRollData());
 			roll.toMessage({
-				speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+				speaker: ChatMessage.getSpeaker({ actor: this.document }),
 				flavor: label,
 				rollMode: game.settings.get('core', 'rollMode'),
 			});
