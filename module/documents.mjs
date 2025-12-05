@@ -47,18 +47,22 @@ export class SystemActor extends Actor {
 	calculateResultStar(baseStat,diceResult) {
 		let nb_fill_star = '';
 		switch (diceResult) {
-			case 5,6:
+			case 5:
+			case 6:
 				if (diceResult == 5 || baseStat >= 1) {
 					nb_fill_star = '★';
 				}
 				break;
-			case 7,8:
+			case 7:
+			case 8:
 				if (diceResult == 7 || baseStat >= 2) {
 					nb_fill_star = '★★';
 				}
 				break;
-			case 9,10,11,12:
-				console.log(baseStat,diceResult);
+			case 9:
+			case 10:
+			case 11:
+			case 12:
 				if ((diceResult == 9 && baseStat >= 1) || (diceResult == 10 && baseStat >= 2) || (diceResult >= 11 && baseStat >= 3)) {
 					nb_fill_star = '★★★';
 				}
