@@ -42,7 +42,7 @@ export class PilotActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
 	}
 
 	get title() {
-		return `${this.document.name}: ${game.i18n.localize('SPEEDHEROES.SheetConfig')}`
+		return `${this.document.name}: ${game.i18n.localize('SPEEDHEROES.SheetPilot')}`
 	}
 	
 	/**

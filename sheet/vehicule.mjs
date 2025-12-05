@@ -31,7 +31,7 @@ export class VehiculeActorSheet extends HandlebarsApplicationMixin(ActorSheetV2)
 			actions: {
 				rollAbilityCheck: this.#rollAbilityCheck,
 				onRoll: this.#onRoll,
-				//itemCreate: this.#itemCreate,
+				itemCreate: this.#onItemCreate,
 				//itemDelete: this.#itemDelete
 			 }
 		});
@@ -48,7 +48,7 @@ export class VehiculeActorSheet extends HandlebarsApplicationMixin(ActorSheetV2)
 	}
 
 	get title() {
-		return `${this.document.name}: ${game.i18n.localize('SPEEDHEROES.SheetConfig')}`
+		return `${this.document.name}: ${game.i18n.localize('SPEEDHEROES.SheetVehicule')}`
 	}
 	
 	/**
@@ -132,7 +132,7 @@ export class VehiculeActorSheet extends HandlebarsApplicationMixin(ActorSheetV2)
 	 * @param {Event} event	 The originating click event
 	 * @private
 	 */
-	async _onItemCreate(event) {
+	static async #onItemCreate(event) {
 		event.preventDefault();
 		const header = event.currentTarget;
 		// Get the type of item to create.
@@ -173,8 +173,10 @@ export class VehiculeActorSheet extends HandlebarsApplicationMixin(ActorSheetV2)
 					if (item) return item.roll();
 				case "main":
 					console.log(element,dataset);
-					let label = 'Perform roll';
-					let roll = new foundry.dice.Roll("3db", this.document.getRollData());
+					let label = 'Perform roll<br/>man ★★★<br/>pow ★<br/>rob ★★';
+					let roll = new foundry.dice.Roll("3db");
+					await roll.evaluate()
+					console.log(roll);
 					let message = roll.toMessage({
 						speaker: ChatMessage.getSpeaker({ actor: this.document }),
 						flavor: label,

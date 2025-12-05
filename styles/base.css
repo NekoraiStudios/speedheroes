@@ -395,3 +395,6 @@
 .speedheroes.rollout {
 	margin: auto;
 }
+.roll.speedheroesbasedice.maneuverability {
+	filter: sepia(0.5) hue-rotate(175deg);
+}

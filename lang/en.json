@@ -1,4 +1,6 @@
 {
+	"SPEEDHEROES.SheetVehicule" : "Vehicule Sheet",
+	"SPEEDHEROES.SheetPilot": "Pilot Sheed",
 	"SPEEDHEROES.maneuverability": "Maneuverability",
 	"SPEEDHEROES.power": "Power",
 	"SPEEDHEROES.robustness": "Robustness",

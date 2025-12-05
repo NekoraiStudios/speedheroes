@@ -1,4 +1,6 @@
 {
+	"SPEEDHEROES.SheetVehicule" : "feuille du véhicule",
+	"SPEEDHEROES.SheetPilot": "feuille du pilote",
 	"SPEEDHEROES.maneuverability": "Manoeuvrabilité",
 	"SPEEDHEROES.power": "Puissance",
 	"SPEEDHEROES.robustness": "Robustesse",
