@@ -173,12 +173,12 @@ export class VehiculeActorSheet extends HandlebarsApplicationMixin(ActorSheetV2)
 					if (item) return item.roll();
 				case "main":
 					console.log(element,dataset);
-					let label = 'Perform roll';
+					let label = 'Perform roll-out';
 					let roll = new foundry.dice.Roll("3db");
 					roll = await roll.evaluate()
-					label+= '<br/>maneuverability: '+ this.actor.calculateResultStar(this.actor.maneuverability.value,roll.terms[0].results[0].result);
-					label+= '<br/>power: '+ this.actor.calculateResultStar(this.actor.power.value,roll.terms[0].results[1].result);
-					label+= '<br/>robustness: '+ this.actor.calculateResultStar(this.actor.robustness.value,roll.terms[0].results[2].result);
+					label+= '<br/>maneuverability: '+ this.actor.calculateResultStar(this.actor.system.maneuverability.value,roll.terms[0].results[0].result);
+					label+= '<br/>power: '+ this.actor.calculateResultStar(this.actor.system.power.value,roll.terms[0].results[1].result);
+					label+= '<br/>robustness: '+ this.actor.calculateResultStar(this.actor.system.robustness.value,roll.terms[0].results[2].result);
 					console.log(roll.terms[0].results);
 					let message = roll.toMessage({
 						speaker: ChatMessage.getSpeaker({ actor: this.actor }),
