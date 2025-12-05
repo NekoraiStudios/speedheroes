@@ -47,6 +47,9 @@ export class SystemActor extends Actor {
 	calculateResultStar(baseStat,diceResult) {
 		let nb_fill_star = '';
 		switch (diceResult) {
+			case 3:
+			case 4:
+				nb_fill_star = "!! Complications !!"
 			case 5:
 			case 6:
 				if (diceResult == 5 || baseStat >= 1) {
