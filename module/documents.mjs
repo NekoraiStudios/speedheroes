@@ -58,6 +58,7 @@ export class SystemActor extends Actor {
 				}
 				break;
 			case 9,10,11,12:
+				console.log(baseStat,diceResult);
 				if ((diceResult == 9 && baseStat >= 1) || (diceResult == 10 && baseStat >= 2) || (diceResult >= 11 && baseStat >= 3)) {
 					nb_fill_star = '★★★';
 				}
