@@ -27,9 +27,12 @@ export class SystemActor extends Actor {
 		
 	}
 	
-	rollAbilityCheck(ability) {
+	async rollAbilityCheck(ability) {
 		let label = ability ?? '';
-		let roll = new foundry.dice.Roll("1db",{nbStarNeeded: this?.system[ability]?.value});
+		let roll = new foundry.dice.Roll("1db");
+		let baseStar = this?.system[ability]?.value;
+		roll = await roll.evaluate()
+		label+= ' '+ calculateResultStar(baseStar,roll.result)
 		roll.toMessage({
 				speaker: ChatMessage.getSpeaker({ actor: this }),
 				flavor: label
@@ -39,6 +42,28 @@ export class SystemActor extends Actor {
 		);
 		console.log(roll);
 		return roll;
+	}
+	
+	calculateResultStar(baseStat,diceResult) {
+		let nb_fill_star = '';
+		switch (diceResult) {
+			case 5,6:
+				if (diceResult == 5 || baseStat >= 1) {
+					nb_fill_star = '★';
+				}
+				break;
+			case 7,8:
+				if (diceResult == 7 || baseStat >= 2) {
+					nb_fill_star = '★★';
+				}
+				break;
+			case 9,10,11,12:
+				if ((diceResult == 9 && baseStat >= 1) || (diceResult == 10 && baseStat >= 2) || (diceResult >= 11 && baseStat >= 3)) {
+					nb_fill_star = '★★★';
+				}
+				break;
+		}
+		return nb_fill_star;
 	}
 }
 
