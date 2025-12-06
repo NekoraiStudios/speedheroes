@@ -10,6 +10,9 @@ export class SpeedHeroesBaseDice extends foundry.dice.terms.Die {
 	static DENOMINATION = 'b';
 
 	/** @override */
+	static SERIALIZE_ATTRIBUTES = [...super.SERIALIZE_ATTRIBUTES, "options"];
+	
+	/** @override */
 	get total() {
 		return this.results.length;
 	}
