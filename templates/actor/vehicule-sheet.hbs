@@ -55,27 +55,24 @@
 	<section class="sheet-body">
 
 		{{!-- Owned Features Tab --}}
-		<div class="tab techs" data-group="primary" data-tab="techs">
+		<div class="tab techs active" data-group="primary" data-tab="techs">
 			<section class="grid grid-3col">
-
-					{{!-- The grid classes are defined in scss/global/_grid.scss. To use,
-					use both the "grid" and "grid-Ncol" class where "N" can be any number
-					from 1 to 12 and will create that number of columns.	--}}
-					<div class="abilities flexcol">
-						{{#each techs as |tech key|}}
-						<div class="ability flexrow flex-group-center">
-							<label for="tech.{{key}}" class="resource-label" data-roll="" data-label="{{tech.name}}">{{tech.name}}</label>
-							<span class="tech-mod rollable" data-roll="db" data-label="{{tech.description}}">{{tech.description}}</span>
-						</div>
-						{{/each}}
+				<div class="abilities flexcol">
+					{{#each techs as |tech key|}}
+					<div class="ability flexrow flex-group-center">
+						<span><img src="{{tech.img}}" alt="{{tech.name}}"/></span>
+						<label for="tech.{{key}}" class="resource-label" data-roll="" data-label="{{tech.name}}">{{tech.name}}</label>
+						<span class="tech-mod rollable" data-roll="db" data-label="{{tech.description}}">{{tech.description}}</span>
 					</div>
+					{{/each}}
+				</div>
 			</section>
 		</div>
 
 
 		{{!-- Owned Items Tab --}}
 		<div class="tab equipment" data-group="primary" data-tab="equipment">
-			 {{> "systems/speedheroes/templates/actor/parts/actor-equipment.hbs"}}
+			{{> "systems/speedheroes/templates/actor/parts/actor-equipment.hbs"}}
 		</div>
 
 		{{!-- Owned Spells Tab --}}

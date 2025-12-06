@@ -49,7 +49,8 @@ export class SystemActor extends Actor {
 		switch (diceResult) {
 			case 3:
 			case 4:
-				nb_fill_star = "!! Complications !!"
+				nb_fill_star = "!! Complications !!";
+				break;
 			case 5:
 			case 6:
 				if (diceResult == 5 || baseStat >= 1) {
