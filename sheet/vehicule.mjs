@@ -174,8 +174,8 @@ export class VehiculeActorSheet extends HandlebarsApplicationMixin(ActorSheetV2)
 					if (item) return item.roll();
 				case "main":
 					let label = 'Perform roll-out';
-					let roll = new foundry.dice.Roll("3db");
-					roll = await roll.evaluate()
+					let roll = new foundry.dice.Roll("3db",{0:"maneuverability",1:"power",2:"robustness"});
+					roll = await roll.evaluate(null,["maneuverability","power","robustness"]);
 					label+= '<br/>maneuverability: '+ this.actor.calculateResultStar(this.actor.system.maneuverability.value,roll.terms[0].results[0].result);
 					label+= '<br/>power: '+ this.actor.calculateResultStar(this.actor.system.power.value,roll.terms[0].results[1].result);
 					label+= '<br/>robustness: '+ this.actor.calculateResultStar(this.actor.system.robustness.value,roll.terms[0].results[2].result);
