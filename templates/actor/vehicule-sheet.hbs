@@ -64,9 +64,8 @@
 					<div class="abilities flexcol">
 						{{#each techs as |tech key|}}
 						<div class="ability flexrow flex-group-center">
-							<label for="system.tech.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="d20+@abilities.{{key}}.mod" data-label="{{localize (lookup @root.config.abilities key)}}">{{localize (lookup @root.config.abilities key)}}</label>
-							<input type="text" name="system.abilities.{{key}}.value" value="{{tech.value}}" data-dtype="Number"/>
-							<span class="tech-mod rollable" data-roll="d20+@abilities.{{key}}.mod" data-label="{{localize (lookup @root.config.abilities key)}}">{{numberFormat tech.mod decimals=0 sign=true}}</span>
+							<label for="tech.{{key}}" class="resource-label" data-roll="" data-label="{{tech.name}}">{{tech.name}}</label>
+							<span class="tech-mod rollable" data-roll="db" data-label="{{tech.description}}">{{tech.description}}</span>
 						</div>
 						{{/each}}
 					</div>

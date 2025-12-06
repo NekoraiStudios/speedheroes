@@ -64,7 +64,7 @@ export class TechDataModel extends ItemDataModel {
 		return {
 			...super.defineSchema(),
 			description: new HTMLField(),
-			aspect:  new StringField({
+			aspect: new StringField({
 				required: false,
 				blank: true,
 				options: ["maneuverability", "power", "robustness"],
