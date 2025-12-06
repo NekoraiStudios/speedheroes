@@ -164,22 +164,37 @@ export class VehiculeActorSheet extends HandlebarsApplicationMixin(ActorSheetV2)
 		event.preventDefault();
 		const element = event.target;
 		const dataset = element.dataset;
-		
+
 		// Handle item rolls.
 		if (dataset.rolltype) {
+			let label;
+			let roll;
+			let message;
 			switch (dataset.rolltype) {
 				case "item":
 					const itemId = element.closest('.item').dataset.itemId;
 					const item = this.actor.items.get(itemId);
 					if (item) return item.roll();
 				case "main":
-					let label = 'Perform roll-out';
-					let roll = new foundry.dice.Roll("3db",{0:"maneuverability",1:"power",2:"robustness"});
-					roll = await roll.evaluate(null,["maneuverability","power","robustness"]);
+					label = 'Perform roll-out';
+					roll = new foundry.dice.Roll("3db");
+					roll = await roll.evaluate();
 					label+= '<br/>maneuverability: '+ this.actor.calculateResultStar(this.actor.system.maneuverability.value,roll.terms[0].results[0].result);
 					label+= '<br/>power: '+ this.actor.calculateResultStar(this.actor.system.power.value,roll.terms[0].results[1].result);
 					label+= '<br/>robustness: '+ this.actor.calculateResultStar(this.actor.system.robustness.value,roll.terms[0].results[2].result);
-					let message = roll.toMessage({
+					message = roll.toMessage({
+						speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+						flavor: label,
+					},{rollMode: game.settings.get('core', 'rollMode')});
+					return message;
+				case "tech":
+					label = 'Perform tech';
+					roll = new foundry.dice.Roll("1db");
+					roll = await roll.evaluate({attributes:["tech"]});
+					label+= '<br/>maneuverability: '+ this.actor.calculateResultStar(this.actor.system.maneuverability.value,roll.terms[0].results[0].result);
+					label+= '<br/>power: '+ this.actor.calculateResultStar(this.actor.system.power.value,roll.terms[0].results[1].result);
+					label+= '<br/>robustness: '+ this.actor.calculateResultStar(this.actor.system.robustness.value,roll.terms[0].results[2].result);
+					 message = roll.toMessage({
 						speaker: ChatMessage.getSpeaker({ actor: this.actor }),
 						flavor: label,
 					},{rollMode: game.settings.get('core', 'rollMode')});

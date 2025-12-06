@@ -396,5 +396,14 @@
 	margin: auto;
 }
 .roll.speedheroesbasedice.maneuverability {
-	filter: sepia(0.5) hue-rotate(175deg);
+	filter: invert(100%) sepia(100%) saturate(500%) brightness(3) hue-rotate(320deg);
+}
+.roll.speedheroesbasedice.power {
+	filter: invert(100%) sepia(100%) saturate(500%) brightness(3) hue-rotate(57deg);
+}
+.roll.speedheroesbasedice.robustness {
+	filter: brightness(0) invert(1);
+}
+.roll.speedheroesbasedice.tech {
+	filter: invert(100%) sepia(100%) saturate(500%) brightness(3) hue-rotate(100deg);
 }

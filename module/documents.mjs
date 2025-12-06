@@ -31,7 +31,7 @@ export class SystemActor extends Actor {
 		let label = ability ?? '';
 		let roll = new foundry.dice.Roll("1db");
 		let baseStar = this?.system[ability]?.value;
-		roll = await roll.evaluate()
+		roll = await roll.evaluate({attributes:[ability]})
 		label+= ': '+ this.calculateResultStar(baseStar,roll.terms[0].results[0].result)
 		roll.toMessage({
 				speaker: ChatMessage.getSpeaker({ actor: this }),
