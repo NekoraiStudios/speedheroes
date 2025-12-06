@@ -396,14 +396,17 @@
 	margin: auto;
 }
 .roll.speedheroesbasedice.maneuverability {
-	filter: invert(100%) sepia(100%) saturate(500%) brightness(3) hue-rotate(320deg);
+	filter: invert(1) sepia(1) saturate(5) brightness(3) hue-rotate(320deg);
 }
 .roll.speedheroesbasedice.power {
-	filter: invert(100%) sepia(100%) saturate(500%) brightness(3) hue-rotate(57deg);
+	filter: invert(1) sepia(1) saturate(5) brightness(3) hue-rotate(57deg);
 }
 .roll.speedheroesbasedice.robustness {
-	filter: brightness(0) invert(1);
+	filter: invert(1) saturate(5) brightness(3) ;
 }
 .roll.speedheroesbasedice.tech {
-	filter: invert(100%) sepia(100%) saturate(500%) brightness(3) hue-rotate(100deg);
+	filter: invert(1) sepia(1) saturate(5) brightness(3) hue-rotate(100deg);
+}
+.roll.speedheroesbasedice img {
+	filter: inherit;
 }
