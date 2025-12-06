@@ -60,7 +60,8 @@ export class VehiculeActorSheet extends HandlebarsApplicationMixin(ActorSheetV2)
 		// Call your existing getData method logic to populate the context
 		const context = await super._prepareContext(options);
 		
-		context.tech = context.document.items.filter(item => item.type === "tech");
+		context.techs = context.document.items.filter(item => item.type === "tech");
+		console.log(context.techs)
 		
 		context.system = context.document.system;
 		

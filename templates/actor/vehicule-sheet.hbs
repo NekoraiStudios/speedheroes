@@ -62,7 +62,7 @@
 					use both the "grid" and "grid-Ncol" class where "N" can be any number
 					from 1 to 12 and will create that number of columns.	--}}
 					<div class="abilities flexcol">
-						{{#each system.tech as |tech key|}}
+						{{#each techs as |tech key|}}
 						<div class="ability flexrow flex-group-center">
 							<label for="system.tech.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="d20+@abilities.{{key}}.mod" data-label="{{localize (lookup @root.config.abilities key)}}">{{localize (lookup @root.config.abilities key)}}</label>
 							<input type="text" name="system.abilities.{{key}}.value" value="{{tech.value}}" data-dtype="Number"/>
