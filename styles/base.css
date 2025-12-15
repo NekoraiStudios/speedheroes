@@ -430,3 +430,9 @@
 .flavor-text span.tech{
 	background-color: #00b3ff;
 }
+
+#pause img{
+	height: unset;
+	width: unset;
+
+}
