@@ -73,6 +73,17 @@ Hooks.once("ready", async () => {
 			return false;
 		}
 	});
+	Hooks.on("renderGamePause", (app, html) => {
+		if ( Hooks.events.renderGamePause.length > 1 ) return;
+		html.classList.add("speedheroes");
+		const container = document.createElement("div");
+		container.classList.add("flexcol");
+		container.append(...html.children);
+		html.append(container);
+		const img = html.querySelector("img");
+		img.src = "systems/speedheroes/ui/SpeedHeroes-Logo.png";
+		img.className = "pause";
+	});
 	const prototypeTokenOverrides = await game.settings.get("core","prototypeTokenOverrides");
 	await game.settings.set(
 		"core",
