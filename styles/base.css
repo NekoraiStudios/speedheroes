@@ -412,7 +412,11 @@
 }
 .flavor-text span {
 	margin: 2px auto;
-	padding: 2px;
+	padding: 2px 10px;
+	display: inline-block;
+	width: 100%;
+	border: 2px solid black;
+	color: black;
 }
 .flavor-text span.maneuverability{
 	background-color: #ff7b00;
