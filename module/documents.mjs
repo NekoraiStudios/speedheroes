@@ -35,7 +35,7 @@ export class SystemActor extends Actor {
 		label+= '<br/><span class="power">power: '+ this.calculateResultStar(this.system.power.value,roll.terms[2].results[0].result) + "</span>";
 		label+= '<br/><span class="robustness">robustness: '+ this.calculateResultStar(this.system.robustness.value,roll.terms[4].results[0].result) + "</span>";
 		let message = roll.toMessage({
-			speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+			speaker: ChatMessage.getSpeaker({ actor: this }),
 			flavor: label,
 		},{rollMode: game.settings.get('core', 'rollMode')});
 		return message;
@@ -47,7 +47,7 @@ export class SystemActor extends Actor {
 		roll = await roll.evaluate();
 		label+= '<br/><span class="tech">tech: '+ this.calculateResultStar(this.system.energize,roll.terms[0].results[0].result) + "</span>";
 		let message = roll.toMessage({
-			speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+			speaker: ChatMessage.getSpeaker({ actor: this }),
 			flavor: label,
 		},{rollMode: game.settings.get('core', 'rollMode')});
 		return message;
