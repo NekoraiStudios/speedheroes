@@ -31,9 +31,9 @@ export class SystemActor extends Actor {
 		let label = 'Perform roll-out';
 		let roll = new foundry.dice.Roll("1db[maneuverability]+1db[power]+1db[robustness]");
 		roll = await roll.evaluate();
-		label+= '<br/><span class="maneuverability">maneuverability: '+ this.actor.calculateResultStar(this.actor.system.maneuverability.value,roll.terms[0].results[0].result) + "</span>";
-		label+= '<br/><span class="power">power: '+ this.actor.calculateResultStar(this.actor.system.power.value,roll.terms[2].results[0].result) + "</span>";
-		label+= '<br/><span class="robustness">robustness: '+ this.actor.calculateResultStar(this.actor.system.robustness.value,roll.terms[4].results[0].result) + "</span>";
+		label+= '<br/><span class="maneuverability">maneuverability: '+ this.calculateResultStar(this.system.maneuverability.value,roll.terms[0].results[0].result) + "</span>";
+		label+= '<br/><span class="power">power: '+ this.calculateResultStar(this.system.power.value,roll.terms[2].results[0].result) + "</span>";
+		label+= '<br/><span class="robustness">robustness: '+ this.calculateResultStar(this.system.robustness.value,roll.terms[4].results[0].result) + "</span>";
 		let message = roll.toMessage({
 			speaker: ChatMessage.getSpeaker({ actor: this.actor }),
 			flavor: label,
@@ -45,7 +45,7 @@ export class SystemActor extends Actor {
 		let label = 'Perform tech';
 		let roll = new foundry.dice.Roll("1db[tech]");
 		roll = await roll.evaluate();
-		label+= '<br/><span class="tech">tech: '+ this.actor.calculateResultStar(this.actor.system.energize,roll.terms[0].results[0].result) + "</span>";
+		label+= '<br/><span class="tech">tech: '+ this.calculateResultStar(this.system.energize,roll.terms[0].results[0].result) + "</span>";
 		let message = roll.toMessage({
 			speaker: ChatMessage.getSpeaker({ actor: this.actor }),
 			flavor: label,
