@@ -3,6 +3,7 @@ import { VehiculeDataModel, PilotDataModel, TechDataModel, NpcVehiculeDataModel 
 import { VehiculeActorSheet } from "./sheet/vehicule.mjs";
 import { PilotActorSheet } from "./sheet/pilot.mjs";
 import { SpeedHeroesBaseDice } from "./module/speedHeroesBaseDice.mjs";
+import { SpeedHeroes } from "/module/system.mjs";
 
 Hooks.once("init", () => {
 	// Configure custom Document implementations.
@@ -146,41 +147,3 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
 	});
 
 });
-
-class SpeedHeroes 
-{
-	createSystemMacro = async function (data, slot) {
-		// Check the type of data being dropped (e.g., item, actor, journal entry)
-		if (data.type !== "Actor") return; // Only handle Actor drops
-
-		// Get the item document using its UUID
-		const actor = await fromUuid(data.uuid);
-		if (!actor) return;
-
-		// Define the macro command as a script
-		// This command calls a function you define within your system's codebase
-		const command = `SpeedHeroes.rollPerformance("${actor._id}");`;
-
-		// Create the Macro document
-		let macro = game.macros.find(m => m.name === `Roll ${actor.name}`);
-		if (!macro) {
-			macro = await Macro.create({
-				name: `Roll ${actor.name}`,
-				type: "script",
-				img: actor.img || "icons/svg/dice-target.svg",
-				command: command
-			});
-		}
-
-		// Assign the macro to the hotbar slot
-		game.user.assignHotbarMacro(macro, slot);
-
-		// Prevent the default Foundry VTT drop handling
-		return false;
-	};
-
-	rollPerformance(actorId){
-		game.actors.get(actorId).rollPerformance();
-	}
-}
-
