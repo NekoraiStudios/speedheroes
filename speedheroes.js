@@ -86,3 +86,25 @@ Hooks.once("ready", async () => {
 		})
 	)
 });
+
+Hooks.once('diceSoNiceReady', (dice3d) => {
+	dice3d.addSystem({id:"speedheroes",name:"SpeedHeroes"},"preferred");
+	dice3d.addDicePreset({
+		type:"db",
+		labels:[
+			'systems/speedheroes/ui/dice/SpeedHeroes_empty.png',
+			'systems/speedheroes/ui/dice/SpeedHeroes_empty.png',
+			'systems/speedheroes/ui/dice/SpeedHeroes_!.png',
+			'systems/speedheroes/ui/dice/SpeedHeroes_!.png',
+			'systems/speedheroes/ui/dice/SpeedHeroes_1-1.png',
+			'systems/speedheroes/ui/dice/SpeedHeroes_0-1.png',
+			'systems/speedheroes/ui/dice/SpeedHeroes_2-2.png',
+			'systems/speedheroes/ui/dice/SpeedHeroes_0-2.png',
+			'systems/speedheroes/ui/dice/SpeedHeroes_2-3.png',
+			'systems/speedheroes/ui/dice/SpeedHeroes_1-3.png',
+			'systems/speedheroes/ui/dice/SpeedHeroes_0-3.png',
+			'systems/speedheroes/ui/dice/SpeedHeroes_0-3.png',
+		],
+		system:"speedheroes"
+	});
+});

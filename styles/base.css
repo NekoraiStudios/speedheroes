@@ -402,7 +402,7 @@
 	filter: invert(1) sepia(1) saturate(5) brightness(3) hue-rotate(57deg);
 }
 .roll.speedheroesbasedice.robustness {
-	filter: invert(1) saturate(5) brightness(2.5) ;
+	filter: invert(1) saturate(5) brightness(3) ;
 }
 .roll.speedheroesbasedice.tech {
 	filter: invert(1) sepia(1) saturate(5) brightness(3) hue-rotate(100deg);
