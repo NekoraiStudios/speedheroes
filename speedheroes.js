@@ -3,9 +3,17 @@ import { VehiculeDataModel, PilotDataModel, TechDataModel, NpcVehiculeDataModel 
 import { VehiculeActorSheet } from "./sheet/vehicule.mjs";
 import { PilotActorSheet } from "./sheet/pilot.mjs";
 import { SpeedHeroesBaseDice } from "./module/speedHeroesBaseDice.mjs";
-import { SpeedHeroes } from "./module/system.mjs";
+import { system } from "./module/system.mjs";
+
+globalThis.SpeedHeroes = {
+	SystemActor,
+	SystemItem,
+	system
+};
+
 
 Hooks.once("init", () => {
+	globalThis.SpeedHeroes = game.SpeedHeroes = Object.assign(game.system, globalThis.SpeedHeroes);
 	// Configure custom Document implementations.
 	CONFIG.Actor.documentClass = SystemActor;
 	CONFIG.Item.documentClass = SystemItem;
@@ -58,7 +66,7 @@ Hooks.once("init", () => {
 });
 
 Hooks.once("ready", async () => {
-	Hooks.on("hotbarDrop", (hotbar, data, slot) => SpeedHeroes.createSystemMacro(data, slot));
+	Hooks.on("hotbarDrop", (hotbar, data, slot) => SpeedHeroes.system.createSystemMacro(data, slot));
 	const prototypeTokenOverrides = await game.settings.get("core","prototypeTokenOverrides");
 	await game.settings.set(
 		"core",

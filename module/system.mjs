@@ -1,4 +1,4 @@
-export class SpeedHeroes 
+export class system 
 {
 	createSystemMacro = async function (data, slot) {
 		// Check the type of data being dropped (e.g., item, actor, journal entry)
@@ -10,7 +10,7 @@ export class SpeedHeroes
 
 		// Define the macro command as a script
 		// This command calls a function you define within your system's codebase
-		const command = `SpeedHeroes.rollPerformance("${actor._id}");`;
+		const command = `SpeedHeroes.system.rollPerformance("${actor._id}");`;
 
 		// Create the Macro document
 		let macro = game.macros.find(m => m.name === `Roll ${actor.name}`);
