@@ -15,14 +15,17 @@ export class VehiculeDataModel extends ActorDataModel {
 			...super.defineSchema(),
 			maneuverability: new SchemaField({
 				value: new NumberField({ required: true, integer: true, min: 0, initial: 0 }),
+				tmpstar: new NumberField({ required: false, integer: true, min: -3, max:3, initial: 0 }),
 				complication: new BooleanField({ initial: false }),
 			}), 
 			power: new SchemaField({
 				value: new NumberField({ required: true, integer: true, min: 0, initial: 0 }),
+				tmpstar: new NumberField({ required: false, integer: true, min: -3, max:3, initial: 0 }),
 				complication: new BooleanField({ initial: false }),
 			}), 
 			robustness: new SchemaField({
 				value: new NumberField({ required: true, integer: true, min: 0, initial: 0 }),
+				tmpstar: new NumberField({ required: false, integer: true, min: -3, max:3, initial: 0 }),
 				complication: new BooleanField({ initial: false }),
 			}), 
 			energize: new NumberField({ required: true, integer: true, min: 0, initial: 0 }), 
