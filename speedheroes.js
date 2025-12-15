@@ -57,7 +57,7 @@ Hooks.once("init", () => {
 });
 
 Hooks.once("ready", async () => {
-	prototypeTokenOverrides = await game.settings.get("core","prototypeTokenOverrides");
+	const prototypeTokenOverrides = await game.settings.get("core","prototypeTokenOverrides");
 	await game.settings.set(
 		"core",
 		"prototypeTokenOverrides",

@@ -177,7 +177,7 @@ export class VehiculeActorSheet extends HandlebarsApplicationMixin(ActorSheetV2)
 					if (item) return item.roll();
 				case "main":
 					label = 'Perform roll-out';
-					roll = new foundry.dice.Roll("3db");
+					roll = new foundry.dice.Roll("1db[orange]+1db[green]+1db[white]");
 					roll = await roll.evaluate();
 					label+= '<br/><span class="maneuverability">maneuverability: '+ this.actor.calculateResultStar(this.actor.system.maneuverability.value,roll.terms[0].results[0].result) + "</span>";
 					label+= '<br/><span class="power">power: '+ this.actor.calculateResultStar(this.actor.system.power.value,roll.terms[0].results[1].result) + "</span>";
@@ -189,7 +189,7 @@ export class VehiculeActorSheet extends HandlebarsApplicationMixin(ActorSheetV2)
 					return message;
 				case "tech":
 					label = 'Perform tech';
-					roll = new foundry.dice.Roll("1db");
+					roll = new foundry.dice.Roll("1db[blue]");
 					roll = await roll.evaluate({attributes:["tech"]});
 					label+= '<br/><span class="tech">tech: '+ this.actor.calculateResultStar(this.actor.system.energize,roll.terms[0].results[0].result) + "</span>";
 					 message = roll.toMessage({
