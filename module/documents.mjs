@@ -78,10 +78,10 @@ export class SystemActor extends Actor {
 		let label = ability ?? '';
 		let roll = new foundry.dice.Roll("1db["+ability+"]");
 		let baseStar = this?.system[ability]?.value + this?.system[ability]?.tmpstar;
-		roll = await roll.evaluate({attributes:[ability]})
+		roll = await roll.evaluate()
 		label+= '<span class="'+ability+'">'+ability+': '+ this.calculateResultStar(baseStar,roll.terms[0].results[0].result)
 		if (this?.system[ability]?.tmpstar != 0) {
-			label += ' modified by ' + this.system.robustness.tmpstar;
+			label += ' modified by ' + this?.system[ability]?.tmpstar;
 		}
 		label += "</span>";
 		roll.toMessage({
