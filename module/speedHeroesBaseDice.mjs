@@ -39,7 +39,7 @@ export class SpeedHeroesBaseDice extends foundry.dice.terms.Die {
 	
 	/* -------------------------------------------- */
 
-	/** @override */
+	/** @override 
 	getResultLabel(result) {
 		return {
 			1: "<img src='systems/speedheroes/ui/dice/SpeedHeroes_empty.png' />",
@@ -54,6 +54,24 @@ export class SpeedHeroesBaseDice extends foundry.dice.terms.Die {
 			10: "<img src='systems/speedheroes/ui/dice/SpeedHeroes_1-3.png' />",
 			11: "<img src='systems/speedheroes/ui/dice/SpeedHeroes_0-3.png' />",
 			12: "<img src='systems/speedheroes/ui/dice/SpeedHeroes_0-3.png' />",
+		}[result.result];
+	}*/
+	
+	/** @override */
+	getResultLabel(result) {
+		return {
+			1: "",
+			2: "",
+			3: "!",
+			4: "!",
+			5: "★",
+			6: "☆",
+			7: "★★",
+			8: "☆☆",
+			9: "★★☆",
+			10: "★☆☆",
+			11: "☆☆☆",
+			12: "☆☆☆",
 		}[result.result];
 	}
 	
