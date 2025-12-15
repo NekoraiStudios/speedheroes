@@ -139,7 +139,7 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
 		description: 'Astrotech',
 		category: 'SpeedHeroes',
 		foreground: '#000000',
-		background: '#e6e6e6',
+		background: '#00b3ff',
 		outline: 'none',
 		texture: 'none'
 	});
