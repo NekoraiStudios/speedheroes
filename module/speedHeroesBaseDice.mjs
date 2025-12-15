@@ -21,7 +21,7 @@ export class SpeedHeroesBaseDice extends foundry.dice.terms.Die {
 	async evaluate({minimize=false, maximize=false, attributes=["maneuverability","power","robustness","tech"]} = {}) {
 		// Call the parent evaluate method first, which populates this.results
 		await super.evaluate({minimize, maximize});
-
+		
 		// Loop through the results array and inject your custom data into each result object
 		this.results = this.results.map((result, index) => {
 			// result looks like {result: 7, active: true}
@@ -33,7 +33,7 @@ export class SpeedHeroesBaseDice extends foundry.dice.terms.Die {
 				attribute: attributes[index]
 			};
 		});
-
+		console.log(this);
 		return this;
 	}
 	
