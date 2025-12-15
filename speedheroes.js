@@ -69,7 +69,7 @@ Hooks.once("ready", async () => {
 	// Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
 	Hooks.on("hotbarDrop", (bar, data, slot) => {
 		if ( ["ActiveEffect", "Actor", "Item"].includes(data.type) ) {
-			documents.macro.createSpeedHeroesMacro(data, slot);
+			SpeedHeroes.macro.createSpeedHeroesMacro(data, slot);
 			return false;
 		}
 	});
