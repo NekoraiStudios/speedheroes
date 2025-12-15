@@ -11,7 +11,7 @@
 					<label for="system.maneuverability.value" class="resource-label" data-action="rollAbilityCheck" data-ability="maneuverability">Maneuverability</label>
 					<div class="resource-content flexrow flex-center flex-between">
 					<input type="text" name="system.maneuverability.value" value="{{system.maneuverability.value}}" data-dtype="Number"/>
-					temp
+					<br/>temp
 					<input type="text" name="system.maneuverability.tmpstar" value="{{system.maneuverability.tmpstar}}" data-dtype="Number"/>
 					</div>
 				</div>
@@ -20,7 +20,7 @@
 					<label for="system.power.value" class="resource-label" data-action="rollAbilityCheck" data-ability="power">Power</label>
 					<div class="resource-content flexrow flex-center flex-between">
 					<input type="text" name="system.power.value" value="{{system.power.value}}" data-dtype="Number"/>
-					temp
+					<br/>temp
 					<input type="text" name="system.power.tmpstar" value="{{system.power.tmpstar}}" data-dtype="Number"/>
 					</div>
 				</div>
@@ -29,7 +29,7 @@
 					<label for="system.robustness.value" class="resource-label" data-action="rollAbilityCheck" data-ability="robustness">Robustness</label>
 					<div class="resource-content flexrow flex-center flex-between">
 					<input type="text" name="system.robustness.value" value="{{system.robustness.value}}" data-dtype="Number"/>
-					temp
+					<br/>temp
 					<input type="text" name="system.robustness.tmpstar" value="{{system.robustness.tmpstar}}" data-dtype="Number"/>
 					</div>
 				</div>
@@ -38,15 +38,17 @@
 	</header>
 	<section class="">
 		<div class="resource flex-group-center">
-			<label for="system.energize" class="resource-label" data-action="rollAbilityCheck" data-ability="energize">Energize</label>
+			<label for="system.energize" class="resource-label" data-action="rollAbilityCheck" data-ability="tech">Energize</label>
 			<div class="resource-content flexrow flex-center flex-between">
 			<input type="text" name="system.energize" value="{{system.energize}}" data-dtype="Number"/>
 			</div>
 		</div>
 		<div class="resource flex-group-center">
-			<label for="system.resistance.value" class="resource-label" data-action="rollAbilityCheck" data-ability="resistance">resistance</label>
+			<label for="system.resistance.value" class="resource-label">resistance</label>
 			<div class="resource-content flexrow flex-center flex-between">
+			current
 			<input type="text" name="system.resistance.value" value="{{system.resistance.value}}" data-dtype="Number"/>
+			max
 			<input type="text" name="system.resistance.max" value="{{system.resistance.max}}" data-dtype="Number"/>
 			</div>
 		</div>
