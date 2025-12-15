@@ -410,19 +410,19 @@
 .roll.speedheroesbasedice img {
 	filter: invert(1) brightness(2);
 }
-.dice-roll span {
+.flavor-text span {
 	margin: 2px auto;
 	padding: 2px;
 }
-.dice-roll span.maneuverability{
+.flavor-text span.maneuverability{
 	background-color: #ff7b00;
 }
-.dice-roll span.power{
+.flavor-text span.power{
 	background-color: #33cc33;
 }
-.dice-roll span.robustness{
+.flavor-text span.robustness{
 	background-color: #e6e6e6;
 }
-.dice-roll span.tech{
+.flavor-text span.tech{
 	background-color: #00b3ff;
 }
