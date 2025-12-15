@@ -408,7 +408,7 @@
 	filter: invert(1) sepia(1) saturate(5) brightness(3) hue-rotate(100deg);
 }
 .roll.speedheroesbasedice img {
-	filter: inherit;
+	filter: invert(1) brightness(2);
 }
 .dice-roll span {
 	margin: 2px auto;

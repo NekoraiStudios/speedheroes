@@ -176,27 +176,9 @@ export class VehiculeActorSheet extends HandlebarsApplicationMixin(ActorSheetV2)
 					const item = this.actor.items.get(itemId);
 					if (item) return item.roll();
 				case "main":
-					label = 'Perform roll-out';
-					roll = new foundry.dice.Roll("1db[maneuverability]+1db[power]+1db[robustness]");
-					roll = await roll.evaluate();
-					label+= '<br/><span class="maneuverability">maneuverability: '+ this.actor.calculateResultStar(this.actor.system.maneuverability.value,roll.terms[0].results[0].result) + "</span>";
-					label+= '<br/><span class="power">power: '+ this.actor.calculateResultStar(this.actor.system.power.value,roll.terms[2].results[0].result) + "</span>";
-					label+= '<br/><span class="robustness">robustness: '+ this.actor.calculateResultStar(this.actor.system.robustness.value,roll.terms[4].results[0].result) + "</span>";
-					message = roll.toMessage({
-						speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-						flavor: label,
-					},{rollMode: game.settings.get('core', 'rollMode')});
-					return message;
+					return this.actor.rollPerformance();
 				case "tech":
-					label = 'Perform tech';
-					roll = new foundry.dice.Roll("1db[tech]");
-					roll = await roll.evaluate();
-					label+= '<br/><span class="tech">tech: '+ this.actor.calculateResultStar(this.actor.system.energize,roll.terms[0].results[0].result) + "</span>";
-					 message = roll.toMessage({
-						speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-						flavor: label,
-					},{rollMode: game.settings.get('core', 'rollMode')});
-					return message;
+					return this.actor.rollTech();
 			}
 		}
 
@@ -212,6 +194,8 @@ export class VehiculeActorSheet extends HandlebarsApplicationMixin(ActorSheetV2)
 			return roll;
 		}
 	}
+	
+
 	
 	
 }
