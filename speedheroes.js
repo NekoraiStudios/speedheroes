@@ -3,12 +3,12 @@ import { VehiculeDataModel, PilotDataModel, TechDataModel, NpcVehiculeDataModel 
 import { VehiculeActorSheet } from "./sheet/vehicule.mjs";
 import { PilotActorSheet } from "./sheet/pilot.mjs";
 import { SpeedHeroesBaseDice } from "./module/speedHeroesBaseDice.mjs";
-import { system } from "./module/system.mjs";
+import * as macro from "./module/macro.mjs";
 
 globalThis.SpeedHeroes = {
 	SystemActor,
 	SystemItem,
-	system
+	macro
 };
 
 
@@ -66,7 +66,13 @@ Hooks.once("init", () => {
 });
 
 Hooks.once("ready", async () => {
-	Hooks.on("hotbarDrop", (hotbar, data, slot) => SpeedHeroes.system.createSystemMacro(data, slot));
+	// Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
+	Hooks.on("hotbarDrop", (bar, data, slot) => {
+		if ( ["ActiveEffect", "Actor", "Item"].includes(data.type) ) {
+			documents.macro.createSpeedHeroesMacro(data, slot);
+			return false;
+		}
+	});
 	const prototypeTokenOverrides = await game.settings.get("core","prototypeTokenOverrides");
 	await game.settings.set(
 		"core",
