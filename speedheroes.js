@@ -108,7 +108,7 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
 		system:"speedheroes"
 	});
 	dice3d.addColorset({
-		name: 'shorange',
+		name: 'maneuverability',
 		description: 'Maneuverability',
 		category: 'SpeedHeroes',
 		foreground: '#000000',
@@ -117,7 +117,7 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
 		texture: 'none'
 	});
 	dice3d.addColorset({
-		name: 'shgreen',
+		name: 'power',
 		description: 'Power',
 		category: 'SpeedHeroes',
 		foreground: '#000000',
@@ -126,7 +126,7 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
 		texture: 'none'
 	});
 	dice3d.addColorset({
-		name: 'shwhite',
+		name: 'robustness',
 		description: 'Robustness',
 		category: 'SpeedHeroes',
 		foreground: '#000000',
@@ -135,7 +135,7 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
 		texture: 'none'
 	});
 	dice3d.addColorset({
-		name: 'shblue',
+		name: 'tech',
 		description: 'Astrotech',
 		category: 'SpeedHeroes',
 		foreground: '#000000',

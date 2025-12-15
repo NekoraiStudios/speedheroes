@@ -19,10 +19,9 @@ export class SpeedHeroesBaseDice extends foundry.dice.terms.Die {
 	
 	/** @override */
 	async evaluate({minimize=false, maximize=false} = {}) {
-		const table = {shorange:'maneuverability',shgreen:'power',shwhite:'robustness',shblue:'tech'};
 		// Call the parent evaluate method first, which populates this.results
 		await super.evaluate({minimize, maximize});
-		let flavor = this.options.flavor;
+
 		// Loop through the results array and inject your custom data into each result object
 		this.results = this.results.map((result, index) => {
 			// result looks like {result: 7, active: true}
@@ -31,7 +30,7 @@ export class SpeedHeroesBaseDice extends foundry.dice.terms.Die {
 			return {
 				...result,
 				// Inject your custom data field here
-				attribute: table.flavor
+				attribute: this.options.flavor
 			};
 		});
 		console.log(this);
