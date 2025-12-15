@@ -147,7 +147,7 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
 
 });
 
-createSystemMacro = async function(data, slot) {
+async function createSystemMacro(data, slot) {
 	// Check the type of data being dropped (e.g., item, actor, journal entry)
 	if (data.type !== "Actor") return; // Only handle Actor drops
 
