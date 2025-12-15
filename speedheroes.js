@@ -4,36 +4,6 @@ import { VehiculeActorSheet } from "./sheet/vehicule.mjs";
 import { PilotActorSheet } from "./sheet/pilot.mjs";
 import { SpeedHeroesBaseDice } from "./module/speedHeroesBaseDice.mjs";
 
-
-Hooks.once("ready", async () => {
-	await game.settings.set(
-		"core",
-		"prototypeTokenOverrides",
-		foundry.utils.mergeObject(prototypeTokenOverrides.toObject(), {
-			vehicule: {
-				disposition: CONST.TOKEN_DISPOSITIONS.NEUTRAL,
-				actorLink: true,
-				bar1:{
-					attribute:"resistance"
-				},
-				bar2:{
-					attribute:"superformance"
-				}
-			},
-			npcvehicule: {
-				disposition: CONST.TOKEN_DISPOSITIONS.HOSTILE,
-				actorLink: false,
-				bar1:{
-					attribute:"resistance"
-				},
-				bar2:{
-					attribute:"superformance"
-				}
-			}
-		})
-	)
-});
-
 Hooks.once("init", () => {
 	// Configure custom Document implementations.
 	CONFIG.Actor.documentClass = SystemActor;
@@ -84,4 +54,35 @@ Hooks.once("init", () => {
 		}
 	};
 
+});
+
+Hooks.once("ready", async () => {
+	prototypeTokenOverrides = await game.settings.get("core","prototypeTokenOverrides");
+	await game.settings.set(
+		"core",
+		"prototypeTokenOverrides",
+		foundry.utils.mergeObject(prototypeTokenOverrides.toObject(), {
+			vehicule: {
+				disposition: CONST.TOKEN_DISPOSITIONS.NEUTRAL,
+				actorLink: true,
+				displayBars: CONST.TOKEN_DISPLAY_MODES.OWNER,
+				bar1:{
+					attribute:"resistance"
+				},
+				bar2:{
+					attribute:"superformance"
+				}
+			},
+			npcvehicule: {
+				disposition: CONST.TOKEN_DISPOSITIONS.HOSTILE,
+				actorLink: false,
+				bar1:{
+					attribute:"resistance"
+				},
+				bar2:{
+					attribute:"superformance"
+				}
+			}
+		})
+	)
 });
