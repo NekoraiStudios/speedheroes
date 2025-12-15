@@ -1,6 +1,6 @@
 export class system 
 {
-	createSystemMacro = async function (data, slot) {
+	async createSystemMacro(data, slot) {
 		// Check the type of data being dropped (e.g., item, actor, journal entry)
 		if (data.type !== "Actor") return; // Only handle Actor drops
 
@@ -30,7 +30,7 @@ export class system
 		return false;
 	};
 
-	rollPerformance = function (actorId){
+	rollPerformance(actorId){
 		game.actors.get(actorId).rollPerformance();
 	}
 }
