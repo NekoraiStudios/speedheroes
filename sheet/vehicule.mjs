@@ -179,6 +179,7 @@ export class VehiculeActorSheet extends HandlebarsApplicationMixin(ActorSheetV2)
 					label = 'Perform roll-out';
 					roll = new foundry.dice.Roll("1db[shorange]+1db[shgreen]+1db[shwhite]");
 					roll = await roll.evaluate();
+					console.log(roll);
 					label+= '<br/><span class="maneuverability">maneuverability: '+ this.actor.calculateResultStar(this.actor.system.maneuverability.value,roll.terms[0].results[0].result) + "</span>";
 					label+= '<br/><span class="power">power: '+ this.actor.calculateResultStar(this.actor.system.power.value,roll.terms[1].results[0].result) + "</span>";
 					label+= '<br/><span class="robustness">robustness: '+ this.actor.calculateResultStar(this.actor.system.robustness.value,roll.terms[2].results[0].result) + "</span>";
