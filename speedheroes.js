@@ -1,9 +1,38 @@
 import { SystemActor, SystemItem } from "./module/documents.mjs";
-import { VehiculeDataModel, PilotDataModel, TechDataModel } from "./module/data-models.mjs";
+import { VehiculeDataModel, PilotDataModel, TechDataModel, NpcVehiculeDataModel } from "./module/data-models.mjs";
 import { VehiculeActorSheet } from "./sheet/vehicule.mjs";
 import { PilotActorSheet } from "./sheet/pilot.mjs";
 import { SpeedHeroesBaseDice } from "./module/speedHeroesBaseDice.mjs";
 
+
+Hooks.once("ready", async () => {
+	await game.settings.set(
+		"core",
+		"prototypeTokenOverrides",
+		foundry.utils.mergeObject(prototypeTokenOverrides.toObject(), {
+			vehicule: {
+				disposition: CONST.TOKEN_DISPOSITIONS.NEUTRAL,
+				actorLink: true,
+				bar1:{
+					attribute:"resistance"
+				},
+				bar2:{
+					attribute:"superformance"
+				}
+			},
+			npcvehicule: {
+				disposition: CONST.TOKEN_DISPOSITIONS.HOSTILE,
+				actorLink: false,
+				bar1:{
+					attribute:"resistance"
+				},
+				bar2:{
+					attribute:"superformance"
+				}
+			}
+		})
+	)
+});
 
 Hooks.once("init", () => {
 	// Configure custom Document implementations.
@@ -13,6 +42,7 @@ Hooks.once("init", () => {
 	// Configure System Data Models.
 	CONFIG.Actor.dataModels = {
 		vehicule: VehiculeDataModel,
+		npcvehicule:NpcVehiculeDataModel,
 		pilot: PilotDataModel
 	};
 	CONFIG.Item.dataModels = {
@@ -47,10 +77,8 @@ Hooks.once("init", () => {
 	CONFIG.Actor.trackableAttributes = {
 		vehicle: {
 			bar: [
-				"system.maneuverability",
-				"system.power",
-				"system.robustness",
-				"system.resistance"
+				"resistance",
+				"superformance"
 			],
 			value: []
 		}

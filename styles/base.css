@@ -402,11 +402,27 @@
 	filter: invert(1) sepia(1) saturate(5) brightness(3) hue-rotate(57deg);
 }
 .roll.speedheroesbasedice.robustness {
-	filter: invert(1) saturate(5) brightness(3) ;
+	filter: invert(1) saturate(5) brightness(2.5) ;
 }
 .roll.speedheroesbasedice.tech {
 	filter: invert(1) sepia(1) saturate(5) brightness(3) hue-rotate(100deg);
 }
 .roll.speedheroesbasedice img {
 	filter: inherit;
+}
+.dice-roll span {
+	margin: 2px auto;
+	padding: 2px;
+}
+.dice-roll span.maneuverability{
+	background-color: #ff7b00;
+}
+.dice-roll span.power{
+	background-color: #33cc33;
+}
+.dice-roll span.robustness{
+	background-color: #e6e6e6;
+}
+.dice-roll span.tech{
+	background-color: #00b3ff;
 }

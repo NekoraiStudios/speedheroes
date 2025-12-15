@@ -7,13 +7,10 @@
 			<h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
 
 			<div class="resources grid grid-3col">
-
 				<div class="resource flex-group-center">
 					<label for="system.maneuverability.value" class="resource-label" data-action="rollAbilityCheck" data-ability="maneuverability">Maneuverability</label>
 					<div class="resource-content flexrow flex-center flex-between">
 					<input type="text" name="system.maneuverability.value" value="{{system.maneuverability.value}}" data-dtype="Number"/>
-					<span> / </span>
-					<input type="text" name="system.maneuverability.max" value="{{system.maneuverability.max}}" data-dtype="Number"/>
 					</div>
 				</div>
 
@@ -21,23 +18,34 @@
 					<label for="system.power.value" class="resource-label" data-action="rollAbilityCheck" data-ability="power">Power</label>
 					<div class="resource-content flexrow flex-center flex-between">
 					<input type="text" name="system.power.value" value="{{system.power.value}}" data-dtype="Number"/>
-					<span> / </span>
-					<input type="text" name="system.power.max" value="{{system.power.max}}" data-dtype="Number"/>
 					</div>
 				</div>
 				
-				 <div class="resource flex-group-center">
+				<div class="resource flex-group-center">
 					<label for="system.robustness.value" class="resource-label" data-action="rollAbilityCheck" data-ability="robustness">Robustness</label>
 					<div class="resource-content flexrow flex-center flex-between">
 					<input type="text" name="system.robustness.value" value="{{system.robustness.value}}" data-dtype="Number"/>
-					<span> / </span>
-					<input type="text" name="system.robustness.max" value="{{system.robustness.max}}" data-dtype="Number"/>
 					</div>
 				</div>
 
 			</div>
 		</div>
 	</header>
+	<section class="">
+		<div class="resource flex-group-center">
+			<label for="system.energize" class="resource-label" data-action="rollAbilityCheck" data-ability="energize">Energize</label>
+			<div class="resource-content flexrow flex-center flex-between">
+			<input type="text" name="system.energize" value="{{system.energize}}" data-dtype="Number"/>
+			</div>
+		</div>
+		<div class="resource flex-group-center">
+			<label for="system.resistance.value" class="resource-label" data-action="rollAbilityCheck" data-ability="resistance">resistance</label>
+			<div class="resource-content flexrow flex-center flex-between">
+			<input type="text" name="system.resistance.value" value="{{system.resistance.value}}" data-dtype="Number"/>
+			</div>
+			<input type="text" name="system.resistance.max" value="{{system.resistance.max}}" data-dtype="Number"/>
+		</div>
+	</section>
 	<section class="speedheroes rollout">
 		<input type="button" data-action="onRoll" data-rolltype="main" value="LET'S ROLLOUT!!!"/>
 		<input type="button" data-action="onRoll" data-rolltype="tech" value="TECH TIME"/>
