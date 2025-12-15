@@ -177,11 +177,11 @@ export class VehiculeActorSheet extends HandlebarsApplicationMixin(ActorSheetV2)
 					if (item) return item.roll();
 				case "main":
 					label = 'Perform roll-out';
-					roll = new foundry.dice.Roll("1db[orange]+1db[green]+1db[white]");
+					roll = new foundry.dice.Roll("1db[shorange]+1db[shgreen]+1db[shwhite]");
 					roll = await roll.evaluate();
 					label+= '<br/><span class="maneuverability">maneuverability: '+ this.actor.calculateResultStar(this.actor.system.maneuverability.value,roll.terms[0].results[0].result) + "</span>";
-					label+= '<br/><span class="power">power: '+ this.actor.calculateResultStar(this.actor.system.power.value,roll.terms[0].results[1].result) + "</span>";
-					label+= '<br/><span class="robustness">robustness: '+ this.actor.calculateResultStar(this.actor.system.robustness.value,roll.terms[0].results[2].result) + "</span>";
+					label+= '<br/><span class="power">power: '+ this.actor.calculateResultStar(this.actor.system.power.value,roll.terms[1].results[0].result) + "</span>";
+					label+= '<br/><span class="robustness">robustness: '+ this.actor.calculateResultStar(this.actor.system.robustness.value,roll.terms[2].results[0].result) + "</span>";
 					message = roll.toMessage({
 						speaker: ChatMessage.getSpeaker({ actor: this.actor }),
 						flavor: label,
@@ -189,7 +189,7 @@ export class VehiculeActorSheet extends HandlebarsApplicationMixin(ActorSheetV2)
 					return message;
 				case "tech":
 					label = 'Perform tech';
-					roll = new foundry.dice.Roll("1db[blue]");
+					roll = new foundry.dice.Roll("1db[shblue]");
 					roll = await roll.evaluate({attributes:["tech"]});
 					label+= '<br/><span class="tech">tech: '+ this.actor.calculateResultStar(this.actor.system.energize,roll.terms[0].results[0].result) + "</span>";
 					 message = roll.toMessage({
