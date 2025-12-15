@@ -3,7 +3,7 @@ import { VehiculeDataModel, PilotDataModel, TechDataModel, NpcVehiculeDataModel 
 import { VehiculeActorSheet } from "./sheet/vehicule.mjs";
 import { PilotActorSheet } from "./sheet/pilot.mjs";
 import { SpeedHeroesBaseDice } from "./module/speedHeroesBaseDice.mjs";
-import { SpeedHeroes } from "/module/system.mjs";
+import { SpeedHeroes } from "./module/system.mjs";
 
 Hooks.once("init", () => {
 	// Configure custom Document implementations.
