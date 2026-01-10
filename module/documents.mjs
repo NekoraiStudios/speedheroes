@@ -66,7 +66,7 @@ export class SystemActor extends Actor {
 		label += "</div>";
 		let message = roll.toMessage({
 			speaker: ChatMessage.getSpeaker({ actor: this }),
-			flavor: label,
+			content: label,
 		},{rollMode: game.settings.get('core', 'rollMode')});
 		return message;
 	}
