@@ -32,9 +32,9 @@ export class SystemActor extends Actor {
 		let roll = new foundry.dice.Roll("1db[maneuverability]+1db[power]+1db[robustness]");
 		roll = await roll.evaluate();
 		
-		label+= outputHTML('maneuverability','man', this.system.maneuverability.value,this.system.maneuverability.tmpstar,roll.terms[0].results[0].result);
-		label+= outputHTML('power','pow', this.system.power.value,this.system.power.tmpstar,roll.terms[2].results[0].result);
-		label+= outputHTML('robustness','rob', this.system.robustness.value,this.system.robustness.tmpstar,roll.terms[4].results[0].result);
+		label+= this.outputHTML('maneuverability','man', this.system.maneuverability.value,this.system.maneuverability.tmpstar,roll.terms[0].results[0].result);
+		label+= this.outputHTML('power','pow', this.system.power.value,this.system.power.tmpstar,roll.terms[2].results[0].result);
+		label+= this.outputHTML('robustness','rob', this.system.robustness.value,this.system.robustness.tmpstar,roll.terms[4].results[0].result);
 		
 		let message = roll.toMessage({
 			speaker: ChatMessage.getSpeaker({ actor: this }),
@@ -47,7 +47,7 @@ export class SystemActor extends Actor {
 		let label = 'Perform tech';
 		let roll = new foundry.dice.Roll("1db[tech]");
 		roll = await roll.evaluate();
-		label+= outputHTML('tech','tech', this.system.energize.value,0,roll.terms[0].results[0].result);
+		label+= outputH this.outputHTML'tech', this.system.energize.value,0,roll.terms[0].results[0].result);
 		let message = roll.toMessage({
 			speaker: ChatMessage.getSpeaker({ actor: this }),
 			flavor: label,
@@ -59,7 +59,7 @@ export class SystemActor extends Actor {
 		let label = ability ?? '';
 		let roll = new foundry.dice.Roll("1db["+ability+"]");
 		roll = await roll.evaluate()
-		label+= outputHTML(ability,ability.substring(0,3), this?.system[ability]?.value,this?.system[ability]?.tmpstar,roll.terms[0].results[0].result);
+		label+= this.outputHTML(ability,ability.substring(0,3), this?.system[ability]?.value,this?.system[ability]?.tmpstar,roll.terms[0].results[0].result);
 		roll.toMessage({
 				speaker: ChatMessage.getSpeaker({ actor: this }),
 				flavor: label
