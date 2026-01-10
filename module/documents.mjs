@@ -28,7 +28,7 @@ export class SystemActor extends Actor {
 	}
 	
 	async rollPerformance() {
-		let label = 'Perform roll-out';
+		let label = 'Perform roll-out' + '<br/>';
 		let roll = new foundry.dice.Roll("1db[maneuverability]+1db[power]+1db[robustness]");
 		roll = await roll.evaluate();
 		
@@ -44,7 +44,7 @@ export class SystemActor extends Actor {
 	}
 	
 	async rollTech(){
-		let label = 'Perform tech';
+		let label = 'Perform tech' + '<br/>';
 		let roll = new foundry.dice.Roll("1db[tech]");
 		roll = await roll.evaluate();
 		label+= this.outputHTML('tech', this.system.energize.value,0,roll.terms[0].results[0].result);
@@ -59,7 +59,7 @@ export class SystemActor extends Actor {
 		let label = ability ?? '';
 		let roll = new foundry.dice.Roll("1db["+ability+"]");
 		roll = await roll.evaluate()
-		label+= this.outputHTML(ability,ability.substring(0,3), this?.system[ability]?.value,this?.system[ability]?.tmpstar,roll.terms[0].results[0].result);
+		label+= '<br/>' +this.outputHTML(ability,ability.substring(0,3), this?.system[ability]?.value,this?.system[ability]?.tmpstar,roll.terms[0].results[0].result);
 		roll.toMessage({
 				speaker: ChatMessage.getSpeaker({ actor: this }),
 				flavor: label

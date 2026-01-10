@@ -418,19 +418,26 @@
 	border: 2px solid black;
 	color: black;
 }
-.ability-result .maneuverability{
+.ability-result.maneuverability{
 	background-color: #ff7b00;
 }
-.ability-result .power{
+.ability-result.power{
 	background-color: #33cc33;
 }
-.ability-result .robustness{
+.ability-result.robustness{
 	background-color: #e6e6e6;
 }
-.ability-result .tech{
+.ability-result.tech{
 	background-color: #00b3ff;
 }
 
+p.attribute {
+	font-size: large;
+	text-transform: uppercase;
+}
+p.result {
+	font-size: xx-large;
+}
 #pause img{
 	height: unset;
 	width: unset;
