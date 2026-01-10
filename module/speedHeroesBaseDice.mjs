@@ -17,26 +17,6 @@ export class SpeedHeroesBaseDice extends foundry.dice.terms.Die {
 		return this.results.length;
 	}
 	
-	/** @override */
-	async evaluate({minimize=false, maximize=false} = {}) {
-		// Call the parent evaluate method first, which populates this.results
-		await super.evaluate({minimize, maximize});
-
-		// Loop through the results array and inject your custom data into each result object
-		this.results = this.results.map((result, index) => {
-			// result looks like {result: 7, active: true}
-
-			// Return a new object that merges the existing result data with your custom data
-			return {
-				...result,
-				// Inject your custom data field here
-				attribute: this.options.flavor
-			};
-		});
-		console.log(this);
-		return this;
-	}
-	
 	/* -------------------------------------------- */
 
 	/** @override */
@@ -61,8 +41,6 @@ export class SpeedHeroesBaseDice extends foundry.dice.terms.Die {
 	getResultCSS(result) {
 		return [
 			this.constructor.name.toLowerCase(),
-			`${result.result}`,
-			`${result.attribute}`,
 			this.options.flavor
 		];
 	}
