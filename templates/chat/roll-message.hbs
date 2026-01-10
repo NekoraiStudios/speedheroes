@@ -2,6 +2,23 @@
 	{{#if flavor}}
 	<div class="dice-flavor">{{flavor}}</div>
 	{{/if}}
+	
+	{{#if parts.length}}
+		{{#each parts}}
+			<div class="dices-box">
+				{{#each this.rolls}}
+					<div class="dice-preview {{this.classes}}">
+						<p class="title">{{this.classes}}</p>
+						<p class="result">{{this.result}}</p>
+						{{#if this.modifier}}
+							<p class="modifier">{{this.modifier}}</p>
+						{{/if}}
+					</div>
+				{{/each}}
+			</div>
+		{{/each}}
+	{{/if}}
+	
 	<div class="dice-result">
 		<h4 class="dice-total">View dice</h4>
 		{{{tooltip}}}

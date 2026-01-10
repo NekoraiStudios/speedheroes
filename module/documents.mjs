@@ -29,32 +29,38 @@ export class SystemActor extends Actor {
 	
 	async rollPerformance() {
 		let label = 'Perform roll-out';
-		let roll = new foundry.dice.Roll("1db[maneuverability]+1db[power]+1db[robustness]");
+		let roll = new foundry.dice.Roll("1db[maneuverability]+1db[power]+1db[robustness]",{manTemp:this.system.maneuverability.tmpstar,powTemp:this.system.power.tmpstar,robTemp:this.system.robustness.tmpstar});
 		roll = await roll.evaluate();
-		label+= '<br/><span class="maneuverability">maneuverability: '+ this.calculateResultStar(
+		label+= '<div class="maneuverability">man '+ this.calculateResultStar(
 			this.system.maneuverability.value + this.system.maneuverability.tmpstar,
 			roll.terms[0].results[0].result
 		);
 		if (this.system.maneuverability.tmpstar != 0) {
-			label += ' modified by ' + this.system.maneuverability.tmpstar;
+			if (this.system.maneuverability.tmpstar > 0){
+				label += (this.system.maneuverability.tmpstar > 0) ? '(sup)' : '(inf)';
+			}
 		}
-		label += "</span>";
-		label+= '<br/><span class="power">power: '+ this.calculateResultStar(
+		label += "</div>";
+		label+= '<div class="power">pow '+ this.calculateResultStar(
 			this.system.power.value + this.system.power.tmpstar,
 			roll.terms[2].results[0].result
 		)
 		if (this.system.power.tmpstar != 0) {
-			label += ' modified by ' + this.system.power.tmpstar;
+			if (this.system.power.tmpstar > 0){
+				label += (this.system.power.tmpstar > 0) ? '(sup)' : '(inf)';
+			}
 		}
-		label += "</span>";
-		label+= '<br/><span class="robustness">robustness: '+ this.calculateResultStar(
+		label += "</div>";
+		label+= '<div class="robustness">rob '+ this.calculateResultStar(
 			this.system.robustness.value + this.system.robustness.tmpstar,
 			roll.terms[4].results[0].result
 		)
 		if (this.system.robustness.tmpstar != 0) {
-			label += ' modified by ' + this.system.robustness.tmpstar;
+			if (this.system.robustness.tmpstar > 0){
+				label += (this.system.robustness.tmpstar > 0) ? '(sup)' : '(inf)';
+			}
 		}
-		label += "</span>";
+		label += "</div>";
 		let message = roll.toMessage({
 			speaker: ChatMessage.getSpeaker({ actor: this }),
 			flavor: label,
@@ -99,7 +105,7 @@ export class SystemActor extends Actor {
 		switch (diceResult) {
 			case 3:
 			case 4:
-				nb_fill_star = "!! Complications !!";
+				nb_fill_star = "!";
 				break;
 			case 5:
 			case 6:
