@@ -102,11 +102,13 @@ export class SystemActor extends Actor {
 	}
 	
 	outputHTML(css,attr,baseStat,modifier,result) {
-		let label = '<div class="ability-result '+css+'"><p class="attribute">'+attr+'</p><p class="result">'+ this.calculateResultStar(baseStat+modifier,result) + '</p>';
-		if (this.system.maneuverability.tmpstar != 0) {
-			label += '<p class="modifier">' + ((this.system.maneuverability.tmpstar > 0) ? '(sup)' : '(inf)' ) + '</p>';
+		let label = '<div class="ability-result '+css+'"><p class="attribute">'+attr+'</p><p class="result">'+ this.calculateResultStar(baseStat+modifier,result) + '</p><p class="modifier">';
+		if (modifier != 0) {
+			label += (modifier > 0) ? '(sup)' : '(inf)' ;
+		} else {
+			label += '&nbsp;';
 		}
-		label += "</div>";
+		label += "</p></div>";
 		return label
 	}
 }
