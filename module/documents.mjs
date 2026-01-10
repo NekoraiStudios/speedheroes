@@ -47,7 +47,7 @@ export class SystemActor extends Actor {
 		let label = 'Perform tech' + '<br/>';
 		let roll = new foundry.dice.Roll("1db[tech]");
 		roll = await roll.evaluate();
-		label+= this.outputHTML('tech','tech', this.system.energize.value,0,roll.terms[0].results[0].result);
+		label+= this.outputHTML('tech','tech', this.system.energize,0,roll.terms[0].results[0].result);
 		let message = roll.toMessage({
 			speaker: ChatMessage.getSpeaker({ actor: this }),
 			flavor: label,

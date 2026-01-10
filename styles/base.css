@@ -411,10 +411,11 @@
 	filter: invert(1) brightness(2);
 }
 .ability-result {
-	margin: 2px 1%;
+	margin: 2px 2px;
 	padding: 2px;
 	display: inline-block;
-	width: 31%;
+	width: 86px;
+	height: 86px;
 	border: 2px solid black;
 	color: black;
 	text-align: center;
@@ -433,11 +434,12 @@
 }
 
 p.attribute {
-	font-size: large;
+	font-size: larger;
 	text-transform: uppercase;
 }
 p.result {
-	font-size: xx-large;
+	font-size: x-large;
+	line-height: 12px;
 }
 #pause img{
 	height: unset;
