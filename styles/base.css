@@ -410,7 +410,7 @@
 .roll.speedheroesbasedice img {
 	filter: invert(1) brightness(2);
 }
-.flavor-text span {
+.ability-result {
 	margin: 2px auto;
 	padding: 2px 10px;
 	display: inline-block;
@@ -418,16 +418,16 @@
 	border: 2px solid black;
 	color: black;
 }
-.flavor-text span.maneuverability{
+.ability-result .maneuverability{
 	background-color: #ff7b00;
 }
-.flavor-text span.power{
+.ability-result .power{
 	background-color: #33cc33;
 }
-.flavor-text span.robustness{
+.ability-result .robustness{
 	background-color: #e6e6e6;
 }
-.flavor-text span.tech{
+.ability-result .tech{
 	background-color: #00b3ff;
 }
 

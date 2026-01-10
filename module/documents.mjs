@@ -29,44 +29,16 @@ export class SystemActor extends Actor {
 	
 	async rollPerformance() {
 		let label = 'Perform roll-out';
-		let roll = new foundry.dice.Roll("1db[maneuverability]+1db[power]+1db[robustness]",{manTemp:this.system.maneuverability.tmpstar,powTemp:this.system.power.tmpstar,robTemp:this.system.robustness.tmpstar});
+		let roll = new foundry.dice.Roll("1db[maneuverability]+1db[power]+1db[robustness]");
 		roll = await roll.evaluate();
-		label+= '<div class="maneuverability"><p class="attribute">man</p><p class="result">'+ this.calculateResultStar(
-			this.system.maneuverability.value + this.system.maneuverability.tmpstar,
-			roll.terms[0].results[0].result
-		);
-		label+= '</p>';
-		if (this.system.maneuverability.tmpstar != 0) {
-			label+= '<p class="modifier">';
-			label += (this.system.maneuverability.tmpstar > 0) ? '(sup)' : '(inf)';
-			label+= '</p>';
-		}
-		label += "</div>";
-		label+= '<div class="power"><p class="attribute">pow</p><p class="result">'+ this.calculateResultStar(
-			this.system.power.value + this.system.power.tmpstar,
-			roll.terms[2].results[0].result
-		)
-		label+= '</p>';
-		if (this.system.power.tmpstar != 0) {
-			label+= '<p class="modifier">';
-			label += (this.system.power.tmpstar > 0) ? '(sup)' : '(inf)';
-			label+= '</p>';
-		}
-		label += "</div>";
-		label+= '<div class="robustness"><p class="attribute">rob</p><p class="result">'+ this.calculateResultStar(
-			this.system.robustness.value + this.system.robustness.tmpstar,
-			roll.terms[4].results[0].result
-		)
-		label+= '</p>';
-		if (this.system.robustness.tmpstar != 0) {
-			label+= '<p class="modifier">';
-			label += (this.system.robustness.tmpstar > 0) ? '(sup)' : '(inf)';
-			label+= '</p>';
-		}
-		label += "</div>";
+		
+		label+= outputHTML('maneuverability','man', this.system.maneuverability.value,this.system.maneuverability.tmpstar,roll.terms[0].results[0].result);
+		label+= outputHTML('power','pow', this.system.power.value,this.system.power.tmpstar,roll.terms[2].results[0].result);
+		label+= outputHTML('robustness','rob', this.system.robustness.value,this.system.robustness.tmpstar,roll.terms[4].results[0].result);
+		
 		let message = roll.toMessage({
 			speaker: ChatMessage.getSpeaker({ actor: this }),
-			content: label,
+			flavor: label,
 		},{rollMode: game.settings.get('core', 'rollMode')});
 		return message;
 	}
@@ -75,7 +47,7 @@ export class SystemActor extends Actor {
 		let label = 'Perform tech';
 		let roll = new foundry.dice.Roll("1db[tech]");
 		roll = await roll.evaluate();
-		label+= '<br/><span class="tech">tech: '+ this.calculateResultStar(this.system.energize,roll.terms[0].results[0].result) + "</span>";
+		label+= outputHTML('tech','tech', this.system.energize.value,0,roll.terms[0].results[0].result);
 		let message = roll.toMessage({
 			speaker: ChatMessage.getSpeaker({ actor: this }),
 			flavor: label,
@@ -86,13 +58,8 @@ export class SystemActor extends Actor {
 	async rollAbilityCheck(ability) {
 		let label = ability ?? '';
 		let roll = new foundry.dice.Roll("1db["+ability+"]");
-		let baseStar = this?.system[ability]?.value + this?.system[ability]?.tmpstar;
 		roll = await roll.evaluate()
-		label+= '<span class="'+ability+'">'+ability+': '+ this.calculateResultStar(baseStar,roll.terms[0].results[0].result)
-		if (this?.system[ability]?.tmpstar != 0) {
-			label += ' modified by ' + this?.system[ability]?.tmpstar;
-		}
-		label += "</span>";
+		label+= outputHTML(ability,ability.substring(0,3), this?.system[ability]?.value,this?.system[ability]?.tmpstar,roll.terms[0].results[0].result);
 		roll.toMessage({
 				speaker: ChatMessage.getSpeaker({ actor: this }),
 				flavor: label
@@ -132,6 +99,15 @@ export class SystemActor extends Actor {
 				break;
 		}
 		return nb_fill_star;
+	}
+	
+	outputHTML(css,attr,baseStat,modifier,result) {
+		let label = '<div class="ability-result '+css+'"><p class="attribute">'+attr+'</p><p class="result">'+ this.calculateResultStar(baseStat+modifier,result) + '</p>';
+		if (this.system.maneuverability.tmpstar != 0) {
+			label += '<p class="modifier">' + ((this.system.maneuverability.tmpstar > 0) ? '(sup)' : '(inf)' ) + '</p>';
+		}
+		label += "</div>";
+		return label
 	}
 }
 
