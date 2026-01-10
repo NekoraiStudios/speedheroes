@@ -31,34 +31,37 @@ export class SystemActor extends Actor {
 		let label = 'Perform roll-out';
 		let roll = new foundry.dice.Roll("1db[maneuverability]+1db[power]+1db[robustness]",{manTemp:this.system.maneuverability.tmpstar,powTemp:this.system.power.tmpstar,robTemp:this.system.robustness.tmpstar});
 		roll = await roll.evaluate();
-		label+= '<div class="maneuverability">man '+ this.calculateResultStar(
+		label+= '<div class="maneuverability"><p class="attribute">man</p><p class="result">'+ this.calculateResultStar(
 			this.system.maneuverability.value + this.system.maneuverability.tmpstar,
 			roll.terms[0].results[0].result
 		);
+		label+= '</p>';
 		if (this.system.maneuverability.tmpstar != 0) {
-			if (this.system.maneuverability.tmpstar > 0){
-				label += (this.system.maneuverability.tmpstar > 0) ? '(sup)' : '(inf)';
-			}
+			label+= '<p class="modifier">';
+			label += (this.system.maneuverability.tmpstar > 0) ? '(sup)' : '(inf)';
+			label+= '</p>';
 		}
 		label += "</div>";
-		label+= '<div class="power">pow '+ this.calculateResultStar(
+		label+= '<div class="power"><p class="attribute">pow</p><p class="result">'+ this.calculateResultStar(
 			this.system.power.value + this.system.power.tmpstar,
 			roll.terms[2].results[0].result
 		)
+		label+= '</p>';
 		if (this.system.power.tmpstar != 0) {
-			if (this.system.power.tmpstar > 0){
-				label += (this.system.power.tmpstar > 0) ? '(sup)' : '(inf)';
-			}
+			label+= '<p class="modifier">';
+			label += (this.system.power.tmpstar > 0) ? '(sup)' : '(inf)';
+			label+= '</p>';
 		}
 		label += "</div>";
-		label+= '<div class="robustness">rob '+ this.calculateResultStar(
+		label+= '<div class="robustness"><p class="attribute">rob</p><p class="result">'+ this.calculateResultStar(
 			this.system.robustness.value + this.system.robustness.tmpstar,
 			roll.terms[4].results[0].result
 		)
+		label+= '</p>';
 		if (this.system.robustness.tmpstar != 0) {
-			if (this.system.robustness.tmpstar > 0){
-				label += (this.system.robustness.tmpstar > 0) ? '(sup)' : '(inf)';
-			}
+			label+= '<p class="modifier">';
+			label += (this.system.robustness.tmpstar > 0) ? '(sup)' : '(inf)';
+			label+= '</p>';
 		}
 		label += "</div>";
 		let message = roll.toMessage({

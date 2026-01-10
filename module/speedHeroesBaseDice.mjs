@@ -63,6 +63,7 @@ export class SpeedHeroesBaseDice extends foundry.dice.terms.Die {
 			this.constructor.name.toLowerCase(),
 			`${result.result}`,
 			`${result.attribute}`,
+			this.options.flavor
 		];
 	}
 }
