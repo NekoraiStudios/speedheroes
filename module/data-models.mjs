@@ -28,7 +28,7 @@ export class VehiculeDataModel extends ActorDataModel {
 				tmpstar: new NumberField({ required: false, integer: true, min: -3, max:3, initial: 0 }),
 				complication: new BooleanField({ initial: false }),
 			}),
-			energize: new SchemaField({
+			tech: new SchemaField({
 				value: new NumberField({ required: true, integer: true, min: 0, initial: 0 }),
 				tmpstar: new NumberField({ required: false, integer: true, min: -3, max:3, initial: 0 }),
 				complication: new BooleanField({ initial: false }),
@@ -40,9 +40,7 @@ export class VehiculeDataModel extends ActorDataModel {
 			superformance: new SchemaField({
 				value: new NumberField({ required: true, integer: true, min: 0, initial: 0 }),
 				max: new NumberField({ required: true, integer: true, min: 3, initial: 3 })
-			}),
-			pilot: new EmbeddedDocumentField(foundry.documents.BaseActor),
-			tech: new EmbeddedDocumentField(foundry.documents.BaseItem)
+			})
 		}
 	}
 }

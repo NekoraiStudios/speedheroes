@@ -51,14 +51,14 @@
 	</header>
 	<section class="">
 		<div class="resource flex-group-center">
-			<label for="system.energize" class="resource-label" data-action="rollAbilityCheck" data-ability="energize">{{localize 'SPEEDHEROES.tech.base'}}</label>
+			<label for="system.tech.value" class="resource-label" data-action="rollAbilityCheck" data-ability="tech">{{localize 'SPEEDHEROES.tech.base'}}</label>
 			<div class="resource-content flexcol flex-center flex-between">
-			<select name="system.energize.value">
-				{{selectOptions starObj selected=system.energize.value localize=true}}
+			<select name="system.tech.value">
+				{{selectOptions starObj selected=system.tech.value localize=true}}
 			</select>
 			<span>{{localize 'SPEEDHEROES.modifier'}}</span>
-			<select name="system.energize.tmpstar">
-				{{selectOptions tmpstarObj selected=system.energize.tmpstar localize=true}}
+			<select name="system.tech.tmpstar">
+				{{selectOptions tmpstarObj selected=system.tech.tmpstar localize=true}}
 			</select>
 			</div>
 		</div>
