@@ -93,7 +93,7 @@ export class SystemActor extends Actor {
 			case 10:
 			case 11:
 			case 12:
-				if ((diceResult == 9 && baseStat >= 1) || (diceResult == 10 && baseStat >= 2) || (diceResult >= 11 && baseStat >= 3)) {
+				if ((diceResult == 9 && baseStat >= 1) || (diceResult == 10 && baseStat >= 2) || (diceResult >= 11 && baseStat >= 3) || (diceResult <=2 && baseStat >= 4)) {
 					nb_fill_star = '★★★';
 				}
 				break;
