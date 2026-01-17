@@ -82,6 +82,12 @@ export class VehiculeActorSheet extends HandlebarsApplicationMixin(ActorSheetV2)
 			"0": "SPEEDHEROES.neutral.base",
 			"-1": "SPEEDHEROES.inferiority.base",
 		}
+		context.starObj = {
+			0:"",
+			1:"★",
+			2:"★★",
+			3:"★★★",
+		}
 		return context;
 	}
 

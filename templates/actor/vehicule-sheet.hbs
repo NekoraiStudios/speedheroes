@@ -10,7 +10,9 @@
 				<div class="resource flex-group-center">
 					<label for="system.maneuverability.value" class="resource-label" data-action="rollAbilityCheck" data-ability="maneuverability">{{localize 'SPEEDHEROES.maneuverability.base'}}</label>
 					<div class="resource-content flexrow flex-center flex-between">
-					<input type="text" name="system.maneuverability.value" value="{{system.maneuverability.value}}" data-dtype="Number"/>
+					<select name="system.maneuverability.value">
+						{{selectOptions starObj selected=system.maneuverability.value localize=false}}
+					</select>
 					<br/>{{localize 'SPEEDHEROES.modifier'}}
 					<select name="system.maneuverability.tmpstar">
 						{{selectOptions tmpstarObj selected=system.maneuverability.tmpstar localize=true}}
@@ -22,7 +24,9 @@
 				<div class="resource flex-group-center">
 					<label for="system.power.value" class="resource-label" data-action="rollAbilityCheck" data-ability="power">{{localize 'SPEEDHEROES.power.base'}}</label>
 					<div class="resource-content flexrow flex-center flex-between">
-					<input type="text" name="system.power.value" value="{{system.power.value}}" data-dtype="Number"/>
+					<select name="system.power.value">
+						{{selectOptions starObj selected=system.power.value localize=false}}
+					</select>
 					<br/>{{localize 'SPEEDHEROES.modifier'}}
 					<select name="system.power.tmpstar">
 						{{selectOptions tmpstarObj selected=system.power.tmpstar localize=true}}
@@ -33,7 +37,9 @@
 				<div class="resource flex-group-center">
 					<label for="system.robustness.value" class="resource-label" data-action="rollAbilityCheck" data-ability="robustness">{{localize 'SPEEDHEROES.robustness.base'}}</label>
 					<div class="resource-content flexrow flex-center flex-between">
-					<input type="text" name="system.robustness.value" value="{{system.robustness.value}}" data-dtype="Number"/>
+					<select name="system.robustness.value">
+						{{selectOptions starObj selected=system.robustness.value localize=false}}
+					</select>
 					<br/>{{localize 'SPEEDHEROES.modifier'}}
 					<select name="system.robustness.tmpstar">
 						{{selectOptions tmpstarObj selected=system.robustness.tmpstar localize=true}}
@@ -47,6 +53,9 @@
 		<div class="resource flex-group-center">
 			<label for="system.energize" class="resource-label" data-action="rollAbilityCheck" data-ability="tech">{{localize 'SPEEDHEROES.tech.base'}}</label>
 			<div class="resource-content flexrow flex-center flex-between">
+			<select name="system.energize.value">
+				{{selectOptions starObj selected=system.energize.value localize=false}}
+			</select>
 			<input type="text" name="system.energize.value" value="{{system.energize.value}}" data-dtype="Number"/>
 			<br/>
 			<select name="system.energize.tmpstar">
