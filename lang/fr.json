@@ -4,15 +4,15 @@
 	
 	"SPEEDHEROES.modifier":"est en",
 	
-	"SPEEDHEROES.maneuverability": "Manoeuvrabilité",
-	"SPEEDHEROES.power": "Puissance",
-	"SPEEDHEROES.robustness": "Robustesse",
-	"SPEEDHEROES.resistance": "Résistance",
-	"SPEEDHEROES.tech": "Énergification",
+	"SPEEDHEROES.maneuverability.base": "Manoeuvrabilité",
+	"SPEEDHEROES.power.base": "Puissance",
+	"SPEEDHEROES.robustness.base": "Robustesse",
+	"SPEEDHEROES.resistance.base": "Résistance",
+	"SPEEDHEROES.tech.base": "Énergification",
 	
-	"SPEEDHEROES.superiority":"superiority",
-	"SPEEDHEROES.neutral":"-",
-	"SPEEDHEROES.inferiority":"inferiority",
+	"SPEEDHEROES.superiority.base":"superiority",
+	"SPEEDHEROES.neutral.base":"-",
+	"SPEEDHEROES.inferiority.base":"inferiority",
 	"SPEEDHEROES.superiority.short":"(sup)",
 	"SPEEDHEROES.neutral.short":"",
 	"SPEEDHEROES.inferiority.short":"(inf)",
