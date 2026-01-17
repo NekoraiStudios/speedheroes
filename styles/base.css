@@ -184,6 +184,10 @@
 	justify-content: space-between;
 }
 
+.flex-center {
+	align-items: center;
+}
+
 .flexlarge {
 	flex: 2;
 }
@@ -209,7 +213,6 @@
 }
 .speedheroes .sheet-header {
 	flex: 0 auto;
-	overflow: hidden;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
