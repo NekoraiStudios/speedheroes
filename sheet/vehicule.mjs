@@ -19,8 +19,12 @@ export class VehiculeActorSheet extends HandlebarsApplicationMixin(ActorSheetV2)
 				submitOnChange: true,
 				closeOnSubmit: false
 			},
-			width: 600,
+			width: 700,
 			height: 600,
+			window: {
+				resizable: true,
+				minimizable: true,
+			},
 			tabs: [
 				{
 					navSelector: '.sheet-tabs',

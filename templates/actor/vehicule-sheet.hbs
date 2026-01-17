@@ -11,7 +11,7 @@
 					<label for="system.maneuverability.value" class="resource-label" data-action="rollAbilityCheck" data-ability="maneuverability">{{localize 'SPEEDHEROES.maneuverability.base'}}</label>
 					<div class="resource-content flexrow flex-center flex-between">
 					<select name="system.maneuverability.value">
-						{{selectOptions starObj selected=system.maneuverability.value localize=false}}
+						{{selectOptions starObj selected=system.maneuverability.value localize=true}}
 					</select>
 					<br/>{{localize 'SPEEDHEROES.modifier'}}
 					<select name="system.maneuverability.tmpstar">
@@ -25,7 +25,7 @@
 					<label for="system.power.value" class="resource-label" data-action="rollAbilityCheck" data-ability="power">{{localize 'SPEEDHEROES.power.base'}}</label>
 					<div class="resource-content flexrow flex-center flex-between">
 					<select name="system.power.value">
-						{{selectOptions starObj selected=system.power.value localize=false}}
+						{{selectOptions starObj selected=system.power.value localize=true}}
 					</select>
 					<br/>{{localize 'SPEEDHEROES.modifier'}}
 					<select name="system.power.tmpstar">
@@ -38,7 +38,7 @@
 					<label for="system.robustness.value" class="resource-label" data-action="rollAbilityCheck" data-ability="robustness">{{localize 'SPEEDHEROES.robustness.base'}}</label>
 					<div class="resource-content flexrow flex-center flex-between">
 					<select name="system.robustness.value">
-						{{selectOptions starObj selected=system.robustness.value localize=false}}
+						{{selectOptions starObj selected=system.robustness.value localize=true}}
 					</select>
 					<br/>{{localize 'SPEEDHEROES.modifier'}}
 					<select name="system.robustness.tmpstar">
@@ -54,9 +54,8 @@
 			<label for="system.energize" class="resource-label" data-action="rollAbilityCheck" data-ability="tech">{{localize 'SPEEDHEROES.tech.base'}}</label>
 			<div class="resource-content flexrow flex-center flex-between">
 			<select name="system.energize.value">
-				{{selectOptions starObj selected=system.energize.value localize=false}}
+				{{selectOptions starObj selected=system.energize.value localize=true}}
 			</select>
-			<input type="text" name="system.energize.value" value="{{system.energize.value}}" data-dtype="Number"/>
 			<br/>
 			<select name="system.energize.tmpstar">
 				{{selectOptions tmpstarObj selected=system.energize.tmpstar localize=true}}
