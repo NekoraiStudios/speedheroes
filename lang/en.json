@@ -1,10 +1,35 @@
 {
 	"SPEEDHEROES.SheetVehicule" : "Vehicule Sheet",
-	"SPEEDHEROES.SheetPilot": "Pilot Sheed",
+	"SPEEDHEROES.SheetPilot": "Pilot Sheet",
+	
+	"SPEEDHEROES.modifier":"has",
+	
 	"SPEEDHEROES.maneuverability": "Maneuverability",
 	"SPEEDHEROES.power": "Power",
 	"SPEEDHEROES.robustness": "Robustness",
 	"SPEEDHEROES.resistance": "Resistance",
+	"SPEEDHEROES.tech": "Energification",
+	
+	"SPEEDHEROES.superiority":"superiority",
+	"SPEEDHEROES.neutral":"-",
+	"SPEEDHEROES.inferiority":"inferiority",
+	"SPEEDHEROES.superiority.short":"(sup)",
+	"SPEEDHEROES.neutral.short":"",
+	"SPEEDHEROES.inferiority.short":"(inf)",
+	
+	"SPEEDHEROES.maneuverability.short": "Man",
+	"SPEEDHEROES.power.short": "Pow",
+	"SPEEDHEROES.robustness.short": "Rob",
+	"SPEEDHEROES.resistance.short": "Res",
+	"SPEEDHEROES.tech.short": "Ener",
+	
+	"SPEEDHEROES.performance.throw": "Performance check",
+	"SPEEDHEROES.tech.throw": "Energification check",
+	
+	"SPEEDHEROES.sheet.tab.tech":"Tech",
+	"SPEEDHEROES.sheet.tab.module":"Modules",
+	"SPEEDHEROES.sheet.tab.pilot":"Pilot",
+	
 	"TYPES.item.tech": "Techs",
 	"TYPES.actor.vehicule": "Vehicule",
 	"TYPES.actor.pilot": "Pilot"

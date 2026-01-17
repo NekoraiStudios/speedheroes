@@ -8,29 +8,36 @@
 
 			<div class="resources grid grid-3col">
 				<div class="resource flex-group-center">
-					<label for="system.maneuverability.value" class="resource-label" data-action="rollAbilityCheck" data-ability="maneuverability">Maneuverability</label>
+					<label for="system.maneuverability.value" class="resource-label" data-action="rollAbilityCheck" data-ability="maneuverability">{{localize 'SPEEDHEROES.maneuverability'}}</label>
 					<div class="resource-content flexrow flex-center flex-between">
 					<input type="text" name="system.maneuverability.value" value="{{system.maneuverability.value}}" data-dtype="Number"/>
-					<br/>temp
-					<input type="text" name="system.maneuverability.tmpstar" value="{{system.maneuverability.tmpstar}}" data-dtype="Number"/>
+					<br/>{{localize 'SPEEDHEROES.modifier'}}
+					<select name="system.maneuverability.tmpstar">
+						{{selectOptions tmpstarObj selected=system.maneuverability.tmpstar localize=true}}
+					</select>
+
 					</div>
 				</div>
 
 				<div class="resource flex-group-center">
-					<label for="system.power.value" class="resource-label" data-action="rollAbilityCheck" data-ability="power">Power</label>
+					<label for="system.power.value" class="resource-label" data-action="rollAbilityCheck" data-ability="power">{{localize 'SPEEDHEROES.power'}}</label>
 					<div class="resource-content flexrow flex-center flex-between">
 					<input type="text" name="system.power.value" value="{{system.power.value}}" data-dtype="Number"/>
-					<br/>temp
-					<input type="text" name="system.power.tmpstar" value="{{system.power.tmpstar}}" data-dtype="Number"/>
+					<br/>{{localize 'SPEEDHEROES.modifier'}}
+					<select name="system.power.tmpstar">
+						{{selectOptions tmpstarObj selected=system.power.tmpstar localize=true}}
+					</select>
 					</div>
 				</div>
 				
 				<div class="resource flex-group-center">
-					<label for="system.robustness.value" class="resource-label" data-action="rollAbilityCheck" data-ability="robustness">Robustness</label>
+					<label for="system.robustness.value" class="resource-label" data-action="rollAbilityCheck" data-ability="robustness">{{localize 'SPEEDHEROES.robustness'}}</label>
 					<div class="resource-content flexrow flex-center flex-between">
 					<input type="text" name="system.robustness.value" value="{{system.robustness.value}}" data-dtype="Number"/>
-					<br/>temp
-					<input type="text" name="system.robustness.tmpstar" value="{{system.robustness.tmpstar}}" data-dtype="Number"/>
+					<br/>{{localize 'SPEEDHEROES.modifier'}}
+					<select name="system.robustness.tmpstar">
+						{{selectOptions tmpstarObj selected=system.robustness.tmpstar localize=true}}
+					</select>
 					</div>
 				</div>
 			</div>
@@ -38,13 +45,17 @@
 	</header>
 	<section class="">
 		<div class="resource flex-group-center">
-			<label for="system.energize" class="resource-label" data-action="rollAbilityCheck" data-ability="tech">Energize</label>
+			<label for="system.energize" class="resource-label" data-action="rollAbilityCheck" data-ability="tech">{{localize 'SPEEDHEROES.tech'}}</label>
 			<div class="resource-content flexrow flex-center flex-between">
-			<input type="text" name="system.energize" value="{{system.energize}}" data-dtype="Number"/>
+			<input type="text" name="system.energize.value" value="{{system.energize.value}}" data-dtype="Number"/>
+			<br/>
+			<select name="system.energize.tmpstar">
+				{{selectOptions tmpstarObj selected=system.energize..tmpstar localize=true}}
+			</select>
 			</div>
 		</div>
 		<div class="resource flex-group-center">
-			<label for="system.resistance.value" class="resource-label">resistance</label>
+			<label for="system.resistance.value" class="resource-label">{{localize 'SPEEDHEROES.resistance'}}</label>
 			<div class="resource-content flexrow flex-center flex-between">
 			current
 			<input type="text" name="system.resistance.value" value="{{system.resistance.value}}" data-dtype="Number"/>
@@ -54,18 +65,17 @@
 		</div>
 	</section>
 	<section class="speedheroes rollout">
-		<input type="button" data-action="onRoll" data-rolltype="main" value="LET'S ROLLOUT!!!"/>
-		<input type="button" data-action="onRoll" data-rolltype="tech" value="TECH TIME"/>
+		<input type="button" data-action="onRoll" data-rolltype="main" value="{{localize 'SPEEDHEROES.performance.throw'}}"/>
+		<input type="button" data-action="onRoll" data-rolltype="tech" value="{{localize 'SPEEDHEROES.tech.throw'}}"/>
 	</section>
 
 	{{!-- Sheet Tab Navigation --}}
 	<nav class="sheet-tabs tabs" data-group="primary">
 		{{!-- Default tab is specified in actor-sheet.mjs --}}
-		<a class="item" data-tab="techs">Techs</a>
-		<a class="item" data-tab="equipment">Equipment</a>
-		<a class="item" data-tab="pilot">Pilot</a>
-		<a class="item" data-tab="effects">Effects</a>
-	</nav>
+		<a class="item" data-tab="techs">{{localize 'SPEEDHEROES.sheet.tab.tech'}}</a>
+		<a class="item" data-tab="equipment">{{localize 'SPEEDHEROES.sheet.tab.module'}}</a>
+		<a class="item" data-tab="pilot">{{localize 'SPEEDHEROES.sheet.tab.pilot'}}</a>
+	</nav>	
 
 	{{!-- Sheet Body --}}
 	<section class="sheet-body">
@@ -95,11 +105,6 @@
 		<div class="tab pilot" data-group="primary" data-tab="pilot">
 			{{> "systems/speedheroes/templates/actor/parts/actor-pilot.hbs"}}
 		</div>
-
-		{{!-- Active Effects Tab --}}
-		<div class="tab effects flexcol" data-group="primary" data-tab="effects">
-			{{> "systems/speedheroes/templates/actor/parts/active-effects.hbs"}}
-		</div>
-
+		
 	</section>
 </div>

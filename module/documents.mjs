@@ -32,9 +32,9 @@ export class SystemActor extends Actor {
 		let roll = new foundry.dice.Roll("1db[maneuverability]+1db[power]+1db[robustness]");
 		roll = await roll.evaluate();
 		
-		label+= this.outputHTML('maneuverability','man', this.system.maneuverability.value,this.system.maneuverability.tmpstar,roll.terms[0].results[0].result);
-		label+= this.outputHTML('power','pow', this.system.power.value,this.system.power.tmpstar,roll.terms[2].results[0].result);
-		label+= this.outputHTML('robustness','rob', this.system.robustness.value,this.system.robustness.tmpstar,roll.terms[4].results[0].result);
+		label+= this.outputHTML('maneuverability',game.i18n.format('SPEEDHEROES.maneuverability.short'), this.system.maneuverability.value,this.system.maneuverability.tmpstar,roll.terms[0].results[0].result);
+		label+= this.outputHTML('power', game.i18n.format('SPEEDHEROES.power.short'), this.system.power.value,this.system.power.tmpstar,roll.terms[2].results[0].result);
+		label+= this.outputHTML('robustness', game.i18n.format('SPEEDHEROES.robustness.short'), this.system.robustness.value,this.system.robustness.tmpstar,roll.terms[4].results[0].result);
 		
 		let message = roll.toMessage({
 			speaker: ChatMessage.getSpeaker({ actor: this }),
@@ -47,7 +47,7 @@ export class SystemActor extends Actor {
 		let label = 'Perform tech' + '<br/>';
 		let roll = new foundry.dice.Roll("1db[tech]");
 		roll = await roll.evaluate();
-		label+= this.outputHTML('tech','tech', this.system.energize,0,roll.terms[0].results[0].result);
+		label+= this.outputHTML('tech',game.i18n.format('SPEEDHEROES.tech.short'), this.system.energize.value,this.system.energize.tmpstar,roll.terms[0].results[0].result);
 		let message = roll.toMessage({
 			speaker: ChatMessage.getSpeaker({ actor: this }),
 			flavor: label,
@@ -59,7 +59,7 @@ export class SystemActor extends Actor {
 		let label = ability ?? '';
 		let roll = new foundry.dice.Roll("1db["+ability+"]");
 		roll = await roll.evaluate()
-		label+= '<br/>' +this.outputHTML(ability,ability.substring(0,3), this?.system[ability]?.value,this?.system[ability]?.tmpstar,roll.terms[0].results[0].result);
+		label+= '<br/>' +this.outputHTML(ability,game.i18n.format('SPEEDHEROES.'+ability+'.short'), this?.system[ability]?.value,this?.system[ability]?.tmpstar,roll.terms[0].results[0].result);
 		roll.toMessage({
 				speaker: ChatMessage.getSpeaker({ actor: this }),
 				flavor: label
@@ -73,6 +73,12 @@ export class SystemActor extends Actor {
 	calculateResultStar(baseStat,diceResult) {
 		let nb_fill_star = '&nbsp;';
 		switch (diceResult) {
+			case 1:
+			case 2:
+				if (baseStat >= 4) {
+					nb_fill_star = '★★★';
+				}
+				break;
 			case 3:
 			case 4:
 				nb_fill_star = "!";
@@ -93,7 +99,7 @@ export class SystemActor extends Actor {
 			case 10:
 			case 11:
 			case 12:
-				if ((diceResult == 9 && baseStat >= 1) || (diceResult == 10 && baseStat >= 2) || (diceResult >= 11 && baseStat >= 3) || (diceResult <=2 && baseStat >= 4)) {
+				if ((diceResult == 9 && baseStat >= 1) || (diceResult == 10 && baseStat >= 2) || (diceResult >= 11 && baseStat >= 3)) {
 					nb_fill_star = '★★★';
 				}
 				break;

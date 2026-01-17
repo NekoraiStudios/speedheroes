@@ -27,8 +27,12 @@ export class VehiculeDataModel extends ActorDataModel {
 				value: new NumberField({ required: true, integer: true, min: 0, initial: 0 }),
 				tmpstar: new NumberField({ required: false, integer: true, min: -3, max:3, initial: 0 }),
 				complication: new BooleanField({ initial: false }),
+			}),
+			energize: new SchemaField({
+				value: new NumberField({ required: true, integer: true, min: 0, initial: 0 }),
+				tmpstar: new NumberField({ required: false, integer: true, min: -3, max:3, initial: 0 }),
+				complication: new BooleanField({ initial: false }),
 			}), 
-			energize: new NumberField({ required: true, integer: true, min: 0, initial: 0 }), 
 			resistance: new SchemaField({
 				value: new NumberField({ required: true, integer: true, min: 0, initial: 0 }),
 				max: new NumberField({ required: true, integer: true, min: 0, initial: 0 })
