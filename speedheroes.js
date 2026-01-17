@@ -63,16 +63,6 @@ Hooks.once("init", () => {
 		}
 	};
 
-});
-
-Hooks.once("ready", async () => {
-	// Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
-	Hooks.on("hotbarDrop", (bar, data, slot) => {
-		if ( ["ActiveEffect", "Actor", "Item"].includes(data.type) ) {
-			SpeedHeroes.macro.createSpeedHeroesMacro(data, slot);
-			return false;
-		}
-	});
 	Hooks.on("renderGamePause", (app, html) => {
 		if ( Hooks.events.renderGamePause.length > 1 ) return;
 		html.classList.add("speedheroes");
@@ -84,6 +74,18 @@ Hooks.once("ready", async () => {
 		img.src = "systems/speedheroes/ui/SpeedHeroes-Logo.png";
 		img.className = "pause";
 	});
+	
+});
+
+Hooks.once("ready", async () => {
+	// Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
+	Hooks.on("hotbarDrop", (bar, data, slot) => {
+		if ( ["ActiveEffect", "Actor", "Item"].includes(data.type) ) {
+			SpeedHeroes.macro.createSpeedHeroesMacro(data, slot);
+			return false;
+		}
+	});
+
 	const prototypeTokenOverrides = await game.settings.get("core","prototypeTokenOverrides");
 	await game.settings.set(
 		"core",

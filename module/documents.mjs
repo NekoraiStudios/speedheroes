@@ -28,7 +28,7 @@ export class SystemActor extends Actor {
 	}
 	
 	async rollPerformance() {
-		let label = 'Perform roll-out' + '<br/>';
+		let label = game.i18n.format('SPEEDHEROES.performance.throw') + '<br/>';
 		let roll = new foundry.dice.Roll("1db[maneuverability]+1db[power]+1db[robustness]");
 		roll = await roll.evaluate();
 		
@@ -44,7 +44,7 @@ export class SystemActor extends Actor {
 	}
 	
 	async rollTech(){
-		let label = 'Perform tech' + '<br/>';
+		let label = game.i18n.format('SPEEDHEROES.tech.throw') + '<br/>';
 		let roll = new foundry.dice.Roll("1db[tech]");
 		roll = await roll.evaluate();
 		label+= this.outputHTML('tech',game.i18n.format('SPEEDHEROES.tech.short'), this.system.energize.value,this.system.energize.tmpstar,roll.terms[0].results[0].result);
@@ -56,7 +56,7 @@ export class SystemActor extends Actor {
 	}
 	
 	async rollAbilityCheck(ability) {
-		let label = ability ?? '';
+		let label = game.i18n.format('SPEEDHEROES.'+ability+'.base') ?? '';
 		let roll = new foundry.dice.Roll("1db["+ability+"]");
 		roll = await roll.evaluate()
 		label+= '<br/>' +this.outputHTML(ability,game.i18n.format('SPEEDHEROES.'+ability+'.short'), this?.system[ability]?.value,this?.system[ability]?.tmpstar,roll.terms[0].results[0].result);

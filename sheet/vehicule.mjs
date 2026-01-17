@@ -78,9 +78,9 @@ export class VehiculeActorSheet extends HandlebarsApplicationMixin(ActorSheetV2)
 			);
 		}*/
 		context.tmpstarObj = {
-			"1": "SPEEDHEROES.superiority",
-			"0": "SPEEDHEROES.neutral",
-			"-1": "SPEEDHEROES.inferiority",
+			"1": "SPEEDHEROES.superiority.base",
+			"0": "SPEEDHEROES.neutral.base",
+			"-1": "SPEEDHEROES.inferiority.base",
 		}
 		return context;
 	}
