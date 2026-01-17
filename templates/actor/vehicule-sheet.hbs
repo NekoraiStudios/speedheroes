@@ -66,9 +66,13 @@
 			<label for="system.resistance.value" class="resource-label">{{localize 'SPEEDHEROES.resistance.base'}}</label>
 			<div class="resource-content flexrow flex-center flex-between">
 			current
-			<input type="text" name="system.resistance.value" value="{{system.resistance.value}}" data-dtype="Number"/>
+			<select name="system.resistance.value">
+				{{selectOptions starObj selected=system.resistance.value localize=true}}
+			</select>
 			max
-			<input type="text" name="system.resistance.max" value="{{system.resistance.max}}" data-dtype="Number"/>
+			<select name="system.resistance.max">
+				{{selectOptions starObj selected=system.resistance.max localize=true}}
+			</select>
 			</div>
 		</div>
 	</section>
