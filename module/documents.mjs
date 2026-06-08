@@ -80,18 +80,18 @@ export class SystemActor extends Actor {
 				}
 				break;
 			case 3:
-			case 4:
 				nb_fill_star = "!";
 				break;
+			case 4:
 			case 5:
-			case 6:
 				if (diceResult == 5 || baseStat >= 1) {
 					nb_fill_star = '★';
 				}
 				break;
+			case 6:
 			case 7:
 			case 8:
-				if (diceResult == 7 || baseStat >= 2) {
+				if (diceResult == 8 || baseStat >= 2 || (diceResult == 7 && baseStat == 1)) {
 					nb_fill_star = '★★';
 				}
 				break;
@@ -99,7 +99,7 @@ export class SystemActor extends Actor {
 			case 10:
 			case 11:
 			case 12:
-				if ((diceResult == 9 && baseStat >= 1) || (diceResult == 10 && baseStat >= 2) || (diceResult >= 11 && baseStat >= 3)) {
+				if ((diceResult == 9 && baseStat >= 3) || (diceResult == 10 && baseStat >= 2) || (diceResult == 11 && baseStat >= 1) || diceResult == 12) {
 					nb_fill_star = '★★★';
 				}
 				break;
