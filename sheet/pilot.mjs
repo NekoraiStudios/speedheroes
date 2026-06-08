@@ -161,7 +161,7 @@ export class PilotActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
 					let message = roll.toMessage({
 						speaker: ChatMessage.getSpeaker({ actor: this.actor }),
 						flavor: label,
-					},{create:false,rollMode: game.settings.get('core', 'rollMode')});
+					},{create:false,messageMode: game.settings.get('core', 'messageMode')});
 					return message;
 			}
 		}
@@ -173,7 +173,7 @@ export class PilotActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
 			roll.toMessage({
 				speaker: ChatMessage.getSpeaker({ actor: this.actor }),
 				flavor: label,
-				rollMode: game.settings.get('core', 'rollMode'),
+				messageMode: game.settings.get('core', 'messageMode'),
 			});
 			return roll;
 		}

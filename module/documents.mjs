@@ -39,7 +39,7 @@ export class SystemActor extends Actor {
 		let message = roll.toMessage({
 			speaker: ChatMessage.getSpeaker({ actor: this }),
 			flavor: label,
-		},{rollMode: game.settings.get('core', 'rollMode')});
+		},{messageMode: game.settings.get('core', 'messageMode')});
 		return message;
 	}
 	
@@ -51,7 +51,7 @@ export class SystemActor extends Actor {
 		let message = roll.toMessage({
 			speaker: ChatMessage.getSpeaker({ actor: this }),
 			flavor: label,
-		},{rollMode: game.settings.get('core', 'rollMode')});
+		},{messageMode: game.settings.get('core', 'messageMode')});
 		return message;
 	}
 	
@@ -64,7 +64,7 @@ export class SystemActor extends Actor {
 				speaker: ChatMessage.getSpeaker({ actor: this }),
 				flavor: label
 			},{
-				rollMode: game.settings.get('core', 'rollMode')
+				messageMode: game.settings.get('core', 'messageMode')
 			}
 		);
 		return roll;

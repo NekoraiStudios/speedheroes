@@ -204,7 +204,7 @@ export class VehiculeActorSheet extends HandlebarsApplicationMixin(ActorSheetV2)
 			roll.toMessage({
 				speaker: ChatMessage.getSpeaker({ actor: this.document }),
 				flavor: label,
-				rollMode: game.settings.get('core', 'rollMode'),
+				messageMode: game.settings.get('core', 'messageMode'),
 			});
 			return roll;
 		}
